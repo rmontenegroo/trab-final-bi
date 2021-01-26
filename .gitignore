@@ -1,5 +1,4 @@
 *.csv
 *.gz
 *.zip
-**/extraidos/*
 /.project
