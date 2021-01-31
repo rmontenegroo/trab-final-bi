@@ -23,8 +23,6 @@
 - Substituição de NULL por 'SEM PARTIDO' quando parlamentar não apresenta partido;
 - Modificados alguns nomes de parlamentares na tabela de emendas para que fossem iguais aos dos campos nm_eleitoral em st1_parlamentares, e nm_senador em st1_senadores;
 
-### Stage 1
-
 ## Fontes de dados disponíveis
 
 ### Stage 0
