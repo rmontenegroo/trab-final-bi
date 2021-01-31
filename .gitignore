@@ -3,3 +3,6 @@
 *.zip
 /.project
 /stages/stage0/step_votos_parlamentares/extraidos/2006/votacao_candidato_munzona_*.txt
+/stages/stage0/step_votos_parlamentares/extraidos/2010/votacao_candidato_munzona_*.txt
+/stages/stage0/step_votos_parlamentares/extraidos/2014/votacao_candidato_munzona_*.txt
+/stages/stage0/step_votos_parlamentares/extraidos/2018/votacao_candidato_munzona_*.txt
