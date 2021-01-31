@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>stage1_trata_tabela_gastos</name>
+    <name>stage1_trata_tabela_parlamentares</name>
     <description/>
-    <extended_description>- Separa somente as colunas que serão usadas.
-- Passa as colunas para upper case.
-- Remove - . / de CPF e CNPJ.
-- Substitui campos string com NULL por string vazia
-- Substitui campos númericos com NULL por 0
-- Substitui o campo descrição específica com NULL por SEM ESPECIFICAÇÃO
-- Substitui o campo cpf com NULL por LIDERANÇA
-- </extended_description>
+    <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
     <trans_status>0</trans_status>
@@ -516,131 +509,16 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Concat fields</from>
+      <from>Replace in string</from>
+      <to>ajustes_de_dados</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ajustes_de_dados</from>
       <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
-    <hop>
-      <from>Replace in string</from>
-      <to>trata_so_trecho</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>trata_so_trecho</from>
-      <to>Concat fields</to>
-      <enabled>Y</enabled>
-    </hop>
   </order>
-  <step>
-    <name>Concat fields</name>
-    <type>ConcatFields</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <separator> </separator>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name/>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>txtdescricao</name>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>txtdescricaoespecificacao</name>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>txtpassageiro</name>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>txttrecho</name>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <ConcatFields>
-      <targetFieldName>txtdescricao</targetFieldName>
-      <targetFieldLength>0</targetFieldLength>
-      <removeSelectedFields>Y</removeSelectedFields>
-    </ConcatFields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>912</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>If field value is null</name>
     <type>IfNull</type>
@@ -667,34 +545,28 @@
     </valuetypes>
     <fields>
       <field>
-        <name>vlrrestituicao</name>
-        <value>0</value>
+        <name>sg_partido</name>
+        <value>SEM PARTIDO</value>
         <mask/>
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>txtpassageiro</name>
-        <value/>
-        <mask/>
-        <set_empty_string>Y</set_empty_string>
-      </field>
-      <field>
-        <name>txttrecho</name>
-        <value/>
-        <mask/>
-        <set_empty_string>Y</set_empty_string>
-      </field>
-      <field>
-        <name>cpf</name>
-        <value>LIDERANÇA</value>
+        <name>sg_uf</name>
+        <value>N/I</value>
         <mask/>
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <name>txtdescricaoespecificacao</name>
-        <value/>
+        <name>sexo</name>
+        <value>N/I</value>
         <mask/>
-        <set_empty_string>Y</set_empty_string>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>escolaridade</name>
+        <value>N/I</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
     <attributes/>
@@ -724,7 +596,7 @@
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>Á</replace_string>
@@ -736,7 +608,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>Ã</replace_string>
@@ -748,7 +620,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>Â</replace_string>
@@ -760,7 +632,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>É</replace_string>
@@ -772,7 +644,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>Ê</replace_string>
@@ -784,7 +656,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>Í</replace_string>
@@ -796,7 +668,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>Ó</replace_string>
@@ -808,7 +680,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>Ô</replace_string>
@@ -820,19 +692,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Ü</replace_string>
-        <replace_by_string>U</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>Õ</replace_string>
@@ -844,7 +704,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>Ú</replace_string>
@@ -856,7 +716,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
         <replace_string>Ç</replace_string>
@@ -868,7 +728,7 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txtdescricao</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
         <out_stream_name/>
         <use_regex>yes</use_regex>
         <replace_string>\.$</replace_string>
@@ -880,10 +740,142 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txtdescricao</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ü</replace_string>
+        <replace_by_string>U</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Á</replace_string>
+        <replace_by_string>A</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ã</replace_string>
+        <replace_by_string>A</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>É</replace_string>
+        <replace_by_string>E</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ê</replace_string>
+        <replace_by_string>E</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Í</replace_string>
+        <replace_by_string>I</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ó</replace_string>
+        <replace_by_string>O</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ô</replace_string>
+        <replace_by_string>O</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Õ</replace_string>
+        <replace_by_string>O</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ç</replace_string>
+        <replace_by_string>C</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ú</replace_string>
+        <replace_by_string>U</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
         <out_stream_name/>
         <use_regex>yes</use_regex>
-        <replace_string> ,</replace_string>
+        <replace_string>\.$</replace_string>
         <replace_by_string/>
         <set_empty_string>Y</set_empty_string>
         <replace_field_by_string/>
@@ -892,48 +884,180 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txtdescricaoespecificacao</in_stream_name>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Â</replace_string>
+        <replace_by_string>A</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ü</replace_string>
+        <replace_by_string>U</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Á</replace_string>
+        <replace_by_string>A</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ã</replace_string>
+        <replace_by_string>A</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Â</replace_string>
+        <replace_by_string>A</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>É</replace_string>
+        <replace_by_string>E</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ê</replace_string>
+        <replace_by_string>E</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Í</replace_string>
+        <replace_by_string>I</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ü</replace_string>
+        <replace_by_string>U</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ó</replace_string>
+        <replace_by_string>O</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ô</replace_string>
+        <replace_by_string>O</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Õ</replace_string>
+        <replace_by_string>O</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ú</replace_string>
+        <replace_by_string>U</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>Ç</replace_string>
+        <replace_by_string>C</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
         <out_stream_name/>
         <use_regex>yes</use_regex>
-        <replace_string>^SEM ESPECIFICAÇ.*$</replace_string>
+        <replace_string>\.$</replace_string>
         <replace_by_string/>
         <set_empty_string>Y</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txtdescricaoespecificacao</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>^(.+)$</replace_string>
-        <replace_by_string>\($1\)</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txtpassageiro</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>[\/|;|.]</replace_string>
-        <replace_by_string>\ </replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txtpassageiro</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>^(.+)$</replace_string>
-        <replace_by_string>Passageiro: $1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
@@ -967,100 +1091,51 @@
     </partitioning>
     <fields>
       <field>
-        <name>txnomeparlamentar</name>
+        <name>nomecivil</name>
+        <rename>nm_civil</rename>
+      </field>
+      <field>
+        <name>siglapartido</name>
+        <rename>sg_partido</rename>
+      </field>
+      <field>
+        <name>nome</name>
+        <rename>nm_parlamentar</rename>
+      </field>
+      <field>
+        <name>siglauf</name>
+        <rename>sg_uf</rename>
+      </field>
+      <field>
+        <name>nomeeleitoral</name>
+        <rename>nm_eleitoral</rename>
+      </field>
+      <field>
+        <name>sexo</name>
+      </field>
+      <field>
+        <name>datanascimento</name>
+        <rename>dt_nascimento</rename>
+      </field>
+      <field>
+        <name>ufnascimento</name>
+        <rename>sg_ufnascimento</rename>
+      </field>
+      <field>
+        <name>municipionascimento</name>
+        <rename>nm_municipionascimento</rename>
+      </field>
+      <field>
+        <name>escolaridade</name>
       </field>
       <field>
         <name>cpf</name>
       </field>
       <field>
-        <name>idecadastro</name>
-      </field>
-      <field>
-        <name>sguf</name>
-      </field>
-      <field>
-        <name>sgpartido</name>
-      </field>
-      <field>
-        <name>txtdescricao</name>
-      </field>
-      <field>
-        <name>txtdescricaoespecificacao</name>
-      </field>
-      <field>
-        <name>txtfornecedor</name>
-      </field>
-      <field>
-        <name>txtcnpjcpf</name>
-      </field>
-      <field>
-        <name>datemissao</name>
-      </field>
-      <field>
-        <name>vlrdocumento</name>
-      </field>
-      <field>
-        <name>vlrglosa</name>
-      </field>
-      <field>
-        <name>vlrliquido</name>
-      </field>
-      <field>
-        <name>nummes</name>
-      </field>
-      <field>
-        <name>numano</name>
-      </field>
-      <field>
-        <name>numparcela</name>
-      </field>
-      <field>
-        <name>txtpassageiro</name>
-      </field>
-      <field>
-        <name>txttrecho</name>
-      </field>
-      <field>
-        <name>numlote</name>
-      </field>
-      <field>
-        <name>vlrrestituicao</name>
+        <name>datafalecimento</name>
+        <rename>dt_falecimento</rename>
       </field>
       <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>datemissao</name>
-        <rename>datemissao</rename>
-        <type>Date</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyy-MM-dd</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>txtdescricao</name>
-        <rename>txtdescricao</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1089,7 +1164,111 @@
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <in_stream_name>nm_civil</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>sg_partido</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>nm_parlamentar</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>sg_uf</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>sexo</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>sg_ufnascimento</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>nm_municipionascimento</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>escolaridade</in_stream_name>
         <out_stream_name/>
         <trim_type>both</trim_type>
         <lower_upper>upper</lower_upper>
@@ -1114,110 +1293,6 @@
         <digits>only</digits>
         <remove_special_characters>none</remove_special_characters>
       </field>
-      <field>
-        <in_stream_name>sguf</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml>None</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
-      <field>
-        <in_stream_name>sgpartido</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml>None</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
-      <field>
-        <in_stream_name>txtdescricao</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml>None</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
-      <field>
-        <in_stream_name>txtdescricaoespecificacao</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml>None</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
-      <field>
-        <in_stream_name>txtfornecedor</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml>None</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
-      <field>
-        <in_stream_name>txtcnpjcpf</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml>None</mask_xml>
-        <digits>only</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
-      <field>
-        <in_stream_name>txtpassageiro</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml>None</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
-      <field>
-        <in_stream_name>txttrecho</in_stream_name>
-        <out_stream_name/>
-        <trim_type>both</trim_type>
-        <lower_upper>upper</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char/>
-        <pad_len/>
-        <init_cap>N</init_cap>
-        <mask_xml>None</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1228,7 +1303,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
+      <xloc>352</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1246,38 +1321,31 @@
     </partitioning>
     <connection>stage_gastos_parlamentares_psconn</connection>
     <sql>SELECT
-  txnomeparlamentar
+  idecadastro
+, nomecivil
+, siglapartido
+, nome
+, siglauf
+, email
+, "data"
+, nomeeleitoral
+, sexo
+, datanascimento
+, ufnascimento
+, municipionascimento
+, escolaridade
+, uri
+, uripartido
+, idlegislatura
+, urlfoto
+, condicaoeleitoral
+, situacao
+, descricaostatus
 , cpf
-, idecadastro
-, nucarteiraparlamentar
-, nulegislatura
-, sguf
-, sgpartido
-, codlegislatura
-, numsubcota
-, txtdescricao
-, numespecificacaosubcota
-, txtdescricaoespecificacao
-, txtfornecedor
-, txtcnpjcpf
-, txtnumero
-, indtipodocumento
-, datemissao
-, vlrdocumento
-, vlrglosa
-, vlrliquido
-, nummes
-, numano
-, numparcela
-, txtpassageiro
-, txttrecho
-, numlote
-, numressarcimento
-, vlrrestituicao
-, nudeputadoid
-, idedocumento
-, urldocumento
-FROM "public".st0_gastos
+, urlwebsite
+, redesocial
+, datafalecimento
+FROM "public".st0_parlamentares
 </sql>
     <limit>0</limit>
     <lookup/>
@@ -1286,52 +1354,6 @@ FROM "public".st0_gastos
     <lazy_conversion_active>N</lazy_conversion_active>
     <cached_row_meta_active>N</cached_row_meta_active>
     <row-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>txnomeparlamentar</name>
-        <length>320</length>
-        <precision>-1</precision>
-        <origin>Table input</origin>
-        <comments>txnomeparlamentar</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>cpf</name>
-        <length>15</length>
-        <precision>-1</precision>
-        <origin>Table input</origin>
-        <comments>cpf</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
       <value-meta>
         <type>Integer</type>
         <storagetype>normal</storagetype>
@@ -1356,59 +1378,13 @@ FROM "public".st0_gastos
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>nucarteiraparlamentar</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>nucarteiraparlamentar</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>nulegislatura</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>nulegislatura</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>sguf</name>
-        <length>2</length>
+        <name>nomecivil</name>
+        <length>320</length>
         <precision>-1</precision>
         <origin>Table input</origin>
-        <comments>sguf</comments>
+        <comments>nomecivil</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -1427,58 +1403,12 @@ FROM "public".st0_gastos
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>sgpartido</name>
+        <name>siglapartido</name>
         <length>32</length>
         <precision>-1</precision>
         <origin>Table input</origin>
-        <comments>sgpartido</comments>
+        <comments>siglapartido</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>codlegislatura</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>codlegislatura</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>numsubcota</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>numsubcota</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
@@ -1496,57 +1426,11 @@ FROM "public".st0_gastos
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>txtdescricao</name>
+        <name>nome</name>
         <length>320</length>
         <precision>-1</precision>
         <origin>Table input</origin>
-        <comments>txtdescricao</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>numespecificacaosubcota</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>numespecificacaosubcota</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>txtdescricaoespecificacao</name>
-        <length>320</length>
-        <precision>-1</precision>
-        <origin>Table input</origin>
-        <comments>txtdescricaoespecificacao</comments>
+        <comments>nome</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -1565,11 +1449,11 @@ FROM "public".st0_gastos
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>txtfornecedor</name>
-        <length>320</length>
+        <name>siglauf</name>
+        <length>2</length>
         <precision>-1</precision>
         <origin>Table input</origin>
-        <comments>txtfornecedor</comments>
+        <comments>siglauf</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -1588,58 +1472,12 @@ FROM "public".st0_gastos
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>txtcnpjcpf</name>
-        <length>24</length>
+        <name>email</name>
+        <length>120</length>
         <precision>-1</precision>
         <origin>Table input</origin>
-        <comments>txtcnpjcpf</comments>
+        <comments>email</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>txtnumero</name>
-        <length>160</length>
-        <precision>-1</precision>
-        <origin>Table input</origin>
-        <comments>txtnumero</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>indtipodocumento</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>indtipodocumento</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
@@ -1657,150 +1495,12 @@ FROM "public".st0_gastos
       <value-meta>
         <type>Date</type>
         <storagetype>normal</storagetype>
-        <name>datemissao</name>
+        <name>data</name>
         <length>-1</length>
         <precision>-1</precision>
         <origin>Table input</origin>
-        <comments>datemissao</comments>
+        <comments>data</comments>
         <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>vlrdocumento</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>Table input</origin>
-        <comments>vlrdocumento</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>vlrglosa</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>Table input</origin>
-        <comments>vlrglosa</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>vlrliquido</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>Table input</origin>
-        <comments>vlrliquido</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>nummes</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>nummes</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>numano</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>numano</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>numparcela</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>numparcela</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
@@ -1818,11 +1518,11 @@ FROM "public".st0_gastos
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>txtpassageiro</name>
+        <name>nomeeleitoral</name>
         <length>320</length>
         <precision>-1</precision>
         <origin>Table input</origin>
-        <comments>txtpassageiro</comments>
+        <comments>nomeeleitoral</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -1841,11 +1541,11 @@ FROM "public".st0_gastos
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>txttrecho</name>
-        <length>320</length>
+        <name>sexo</name>
+        <length>1</length>
         <precision>-1</precision>
         <origin>Table input</origin>
-        <comments>txttrecho</comments>
+        <comments>sexo</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -1862,106 +1562,14 @@ FROM "public".st0_gastos
         <lenient_string_to_number>N</lenient_string_to_number>
       </value-meta>
       <value-meta>
-        <type>Integer</type>
+        <type>Date</type>
         <storagetype>normal</storagetype>
-        <name>numlote</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>numlote</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>numressarcimento</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>numressarcimento</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Number</type>
-        <storagetype>normal</storagetype>
-        <name>vlrrestituicao</name>
+        <name>datanascimento</name>
         <length>-1</length>
         <precision>-1</precision>
         <origin>Table input</origin>
-        <comments>vlrrestituicao</comments>
-        <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>nudeputadoid</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>nudeputadoid</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Integer</type>
-        <storagetype>normal</storagetype>
-        <name>idedocumento</name>
-        <length>9</length>
-        <precision>0</precision>
-        <origin>Table input</origin>
-        <comments>idedocumento</comments>
-        <conversion_Mask>####0;-####0</conversion_Mask>
+        <comments>datanascimento</comments>
+        <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
@@ -1979,11 +1587,310 @@ FROM "public".st0_gastos
       <value-meta>
         <type>String</type>
         <storagetype>normal</storagetype>
-        <name>urldocumento</name>
+        <name>ufnascimento</name>
+        <length>2</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>ufnascimento</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>municipionascimento</name>
+        <length>160</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>municipionascimento</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>escolaridade</name>
+        <length>32</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>escolaridade</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>uri</name>
         <length>1024</length>
         <precision>-1</precision>
         <origin>Table input</origin>
-        <comments>urldocumento</comments>
+        <comments>uri</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>uripartido</name>
+        <length>1024</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>uripartido</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Integer</type>
+        <storagetype>normal</storagetype>
+        <name>idlegislatura</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>Table input</origin>
+        <comments>idlegislatura</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>urlfoto</name>
+        <length>1024</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>urlfoto</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>condicaoeleitoral</name>
+        <length>64</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>condicaoeleitoral</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>situacao</name>
+        <length>64</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>situacao</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>descricaostatus</name>
+        <length>2147483647</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>descricaostatus</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>cpf</name>
+        <length>11</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>cpf</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>urlwebsite</name>
+        <length>1024</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>urlwebsite</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>redesocial</name>
+        <length>1024</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>redesocial</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Date</type>
+        <storagetype>normal</storagetype>
+        <name>datafalecimento</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>Table input</origin>
+        <comments>datafalecimento</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -2027,7 +1934,7 @@ FROM "public".st0_gastos
     </partitioning>
     <connection>stage_gastos_parlamentares_psconn</connection>
     <schema>public</schema>
-    <table>st1_gastos</table>
+    <table>st1_parlamentares</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -2044,68 +1951,52 @@ FROM "public".st0_gastos
     <return_field/>
     <fields>
       <field>
+        <column_name>nm_civil</column_name>
+        <stream_name>nm_civil</stream_name>
+      </field>
+      <field>
+        <column_name>sg_partido</column_name>
+        <stream_name>sg_partido</stream_name>
+      </field>
+      <field>
         <column_name>nm_parlamentar</column_name>
-        <stream_name>txnomeparlamentar</stream_name>
+        <stream_name>nm_parlamentar</stream_name>
+      </field>
+      <field>
+        <column_name>sg_uf</column_name>
+        <stream_name>sg_uf</stream_name>
+      </field>
+      <field>
+        <column_name>nm_eleitoral</column_name>
+        <stream_name>nm_eleitoral</stream_name>
+      </field>
+      <field>
+        <column_name>sexo</column_name>
+        <stream_name>sexo</stream_name>
+      </field>
+      <field>
+        <column_name>dt_nascimento</column_name>
+        <stream_name>dt_nascimento</stream_name>
+      </field>
+      <field>
+        <column_name>sg_ufnascimento</column_name>
+        <stream_name>sg_ufnascimento</stream_name>
+      </field>
+      <field>
+        <column_name>nm_municipionascimento</column_name>
+        <stream_name>nm_municipionascimento</stream_name>
+      </field>
+      <field>
+        <column_name>escolaridade</column_name>
+        <stream_name>escolaridade</stream_name>
       </field>
       <field>
         <column_name>cpf</column_name>
         <stream_name>cpf</stream_name>
       </field>
       <field>
-        <column_name>sg_uf</column_name>
-        <stream_name>sguf</stream_name>
-      </field>
-      <field>
-        <column_name>sg_partido</column_name>
-        <stream_name>sgpartido</stream_name>
-      </field>
-      <field>
-        <column_name>nm_fornecedor</column_name>
-        <stream_name>txtfornecedor</stream_name>
-      </field>
-      <field>
-        <column_name>cnpjcpf</column_name>
-        <stream_name>txtcnpjcpf</stream_name>
-      </field>
-      <field>
-        <column_name>dt_emissao</column_name>
-        <stream_name>datemissao</stream_name>
-      </field>
-      <field>
-        <column_name>vl_documento</column_name>
-        <stream_name>vlrdocumento</stream_name>
-      </field>
-      <field>
-        <column_name>vl_glosa</column_name>
-        <stream_name>vlrglosa</stream_name>
-      </field>
-      <field>
-        <column_name>vl_liquido</column_name>
-        <stream_name>vlrliquido</stream_name>
-      </field>
-      <field>
-        <column_name>mes</column_name>
-        <stream_name>nummes</stream_name>
-      </field>
-      <field>
-        <column_name>ano</column_name>
-        <stream_name>numano</stream_name>
-      </field>
-      <field>
-        <column_name>nu_parcela</column_name>
-        <stream_name>numparcela</stream_name>
-      </field>
-      <field>
-        <column_name>nu_lote</column_name>
-        <stream_name>numlote</stream_name>
-      </field>
-      <field>
-        <column_name>vl_restituicao</column_name>
-        <stream_name>vlrrestituicao</stream_name>
-      </field>
-      <field>
-        <column_name>tx_descricao</column_name>
-        <stream_name>txtdescricao</stream_name>
+        <column_name>dt_falecimento</column_name>
+        <stream_name>dt_falecimento</stream_name>
       </field>
     </fields>
     <attributes/>
@@ -2117,13 +2008,13 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
+      <xloc>784</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>trata_so_trecho</name>
+    <name>ajustes_de_dados</name>
     <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
@@ -2135,119 +2026,11 @@ FROM "public".st0_gastos
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>txttrecho</in_stream_name>
+        <in_stream_name>nm_eleitoral</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
-        <replace_string>G3</replace_string>
-        <replace_by_string>/</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txttrecho</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>\ \ +</replace_string>
-        <replace_by_string>\ </replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txttrecho</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>VV</replace_string>
-        <replace_by_string>/</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txttrecho</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string> X </replace_string>
-        <replace_by_string> / </replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txttrecho</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>- </replace_string>
-        <replace_by_string>-</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txttrecho</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string> -</replace_string>
-        <replace_by_string>-</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txttrecho</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>/ </replace_string>
-        <replace_by_string>/</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txttrecho</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string> /</replace_string>
-        <replace_by_string>/</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txttrecho</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>\.$</replace_string>
-        <replace_by_string/>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>txttrecho</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>&gt;</replace_string>
-        <replace_by_string/>
+        <replace_string>PAULO FREIRE COSTA</replace_string>
+        <replace_by_string>PAULO FREIRE</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
@@ -2264,8 +2047,8 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
-      <yloc>144</yloc>
+      <xloc>608</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

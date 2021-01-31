@@ -440,7 +440,7 @@
     <server>127.0.0.1</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>st_gastos_parlamentares</database>
+    <database>dw_gastos_parlamentares</database>
     <port>5432</port>
     <username>postgres</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79ce63db9ca7db</password>

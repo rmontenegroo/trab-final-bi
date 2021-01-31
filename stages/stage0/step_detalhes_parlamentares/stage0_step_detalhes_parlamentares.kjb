@@ -304,7 +304,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>144</xloc>
+      <xloc>48</xloc>
       <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
@@ -316,12 +316,12 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
+      <xloc>768</xloc>
       <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>File exists</name>
+      <name>paralmentares.json?</name>
       <description/>
       <type>FILE_EXISTS</type>
       <attributes/>
@@ -329,7 +329,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>272</xloc>
+      <xloc>368</xloc>
       <yloc>112</yloc>
       <attributes_kjc/>
     </entry>
@@ -368,8 +368,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>272</xloc>
-      <yloc>240</yloc>
+      <xloc>560</xloc>
+      <yloc>256</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -407,30 +407,25 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>448</xloc>
+      <xloc>560</xloc>
       <yloc>112</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>ids_parlamentares?</name>
+      <description/>
+      <type>FILE_EXISTS</type>
+      <attributes/>
+      <filename>${Internal.Entry.Current.Directory}/ids_parlamentares_*.json</filename>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>368</xloc>
+      <yloc>256</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
   <hops>
-    <hop>
-      <from>Start</from>
-      <to>File exists</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
-    <hop>
-      <from>File exists</from>
-      <to>obtem_detalhes_de_parlamentares_pela_api</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
     <hop>
       <from>obtem_detalhes_de_parlamentares_pela_api</from>
       <to>carrega_dados_para_banco</to>
@@ -441,7 +436,7 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>File exists</from>
+      <from>paralmentares.json?</from>
       <to>carrega_dados_para_banco</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -452,6 +447,33 @@
     <hop>
       <from>carrega_dados_para_banco</from>
       <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>paralmentares.json?</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>paralmentares.json?</from>
+      <to>ids_parlamentares?</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>N</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>ids_parlamentares?</from>
+      <to>obtem_detalhes_de_parlamentares_pela_api</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

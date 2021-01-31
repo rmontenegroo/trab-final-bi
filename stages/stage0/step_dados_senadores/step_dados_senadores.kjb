@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>baixar_dados_de_2018</name>
+  <name>step_dados_senadores</name>
   <description/>
   <extended_description/>
   <job_version/>
-  <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
-  <created_date>2021/01/22 09:36:26.392</created_date>
+  <created_date>2021/01/31 13:06:44.750</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2021/01/22 09:36:26.392</modified_date>
+  <modified_date>2021/01/31 13:06:44.750</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -288,12 +287,12 @@
   <shared_objects_file/>
   <entries>
     <entry>
-      <name>baixar_arquivo_zip</name>
+      <name>HTTP</name>
       <description/>
       <type>HTTP</type>
       <attributes/>
-      <url>http://www.portaltransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO</url>
-      <targetfilename>${Internal.Entry.Current.Directory}/baixados/emendas.zip</targetfilename>
+      <url>http://legis.senado.leg.br/dadosabertos/senador/lista/legislatura/1/56</url>
+      <targetfilename>${Internal.Entry.Current.Directory}/senadores.json</targetfilename>
       <file_appended>N</file_appended>
       <date_time_added>N</date_time_added>
       <targetfilename_extension/>
@@ -309,48 +308,48 @@
       <non_proxy_hosts/>
       <addfilenameresult>Y</addfilenameresult>
       <headers>
+        <header>
+          <header_name>Accept</header_name>
+          <header_value>application/json</header_value>
+        </header>
       </headers>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
-      <yloc>160</yloc>
+      <xloc>320</xloc>
+      <yloc>16</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>existe arquivo zip?</name>
+      <name>Start</name>
       <description/>
-      <type>FILE_EXISTS</type>
+      <type>SPECIAL</type>
       <attributes/>
-      <filename>${Internal.Entry.Current.Directory}/baixados/emendas.zip</filename>
+      <start>Y</start>
+      <dummy>N</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>432</xloc>
-      <yloc>160</yloc>
+      <xloc>80</xloc>
+      <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>existem_dados?</name>
-      <description/>
-      <type>FILE_EXISTS</type>
-      <attributes/>
-      <filename>${Internal.Entry.Current.Directory}/extraidos/emendas/Emendas.csv</filename>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>432</xloc>
-      <yloc>432</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>carregar_dados</name>
+      <name>carrega_dados_senadores</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Entry.Current.Directory}/carregar_dados.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/carrega_dados_senadores.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -378,63 +377,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
-      <yloc>432</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>descompacta_zip</name>
-      <description/>
-      <type>UNZIP</type>
-      <attributes/>
-      <zipfilename>${Internal.Entry.Current.Directory}/baixados/emendas.zip</zipfilename>
-      <wildcard/>
-      <wildcardexclude/>
-      <targetdirectory>${Internal.Entry.Current.Directory}/extraidos</targetdirectory>
-      <movetodirectory/>
-      <afterunzip>0</afterunzip>
-      <addfiletoresult>Y</addfiletoresult>
-      <isfromprevious>N</isfromprevious>
-      <adddate>N</adddate>
-      <addtime>N</addtime>
-      <addOriginalTimestamp>N</addOriginalTimestamp>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <rootzip>Y</rootzip>
-      <createfolder>Y</createfolder>
-      <nr_limit>10</nr_limit>
-      <wildcardSource/>
-      <success_condition>success_if_no_errors</success_condition>
-      <iffileexists>OVERWRITE</iffileexists>
-      <create_move_to_directory>N</create_move_to_directory>
-      <setOriginalModificationDate>N</setOriginalModificationDate>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>656</xloc>
-      <yloc>288</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>Start</name>
-      <description/>
-      <type>SPECIAL</type>
-      <attributes/>
-      <start>Y</start>
-      <dummy>N</dummy>
-      <repeat>N</repeat>
-      <schedulerType>0</schedulerType>
-      <intervalSeconds>0</intervalSeconds>
-      <intervalMinutes>60</intervalMinutes>
-      <hour>12</hour>
-      <minutes>0</minutes>
-      <weekDay>1</weekDay>
-      <DayOfMonth>1</DayOfMonth>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>224</xloc>
-      <yloc>432</yloc>
+      <xloc>400</xloc>
+      <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -445,32 +389,27 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>928</xloc>
-      <yloc>432</yloc>
+      <xloc>560</xloc>
+      <yloc>96</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>existe_dados?</name>
+      <description/>
+      <type>FILE_EXISTS</type>
+      <attributes/>
+      <filename>${Internal.Entry.Current.Directory}/senadores.json</filename>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>224</xloc>
+      <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
   <hops>
     <hop>
-      <from>existe arquivo zip?</from>
-      <to>baixar_arquivo_zip</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>existem_dados?</from>
-      <to>carregar_dados</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>carregar_dados</from>
+      <from>carrega_dados_senadores</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
@@ -480,7 +419,7 @@
     </hop>
     <hop>
       <from>Start</from>
-      <to>existem_dados?</to>
+      <to>existe_dados?</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -488,8 +427,17 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>existem_dados?</from>
-      <to>existe arquivo zip?</to>
+      <from>existe_dados?</from>
+      <to>carrega_dados_senadores</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>existe_dados?</from>
+      <to>HTTP</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -497,26 +445,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>existe arquivo zip?</from>
-      <to>descompacta_zip</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>descompacta_zip</from>
-      <to>carregar_dados</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>baixar_arquivo_zip</from>
-      <to>descompacta_zip</to>
+      <from>HTTP</from>
+      <to>carrega_dados_senadores</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

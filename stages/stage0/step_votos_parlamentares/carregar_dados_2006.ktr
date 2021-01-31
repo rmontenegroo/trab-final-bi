@@ -441,7 +441,7 @@
     <server>127.0.0.1</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>st_gastos_parlamentares</database>
+    <database>dw_gastos_parlamentares</database>
     <port>5432</port>
     <username>postgres</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79ce63db9ca7db</password>
@@ -873,115 +873,87 @@
     <fields>
       <field>
         <name>DT_ELEICAO</name>
-        <rename/>
       </field>
       <field>
         <name>HH_GERACAO</name>
-        <rename/>
       </field>
       <field>
         <name>ANO_ELEICAO</name>
-        <rename/>
       </field>
       <field>
         <name>NR_TURNO</name>
-        <rename/>
       </field>
       <field>
         <name>DS_ELEICAO</name>
-        <rename/>
       </field>
       <field>
         <name>SG_UF</name>
-        <rename/>
       </field>
       <field>
         <name>NM_TIPO_ELEICAO</name>
-        <rename/>
       </field>
       <field>
         <name>CD_ELEICAO</name>
-        <rename/>
       </field>
       <field>
         <name>NM_MUNICIPIO</name>
-        <rename/>
       </field>
       <field>
         <name>SG_UE</name>
-        <rename/>
       </field>
       <field>
         <name>NM_UE</name>
-        <rename/>
       </field>
       <field>
         <name>CD_MUNICIPIO</name>
-        <rename/>
       </field>
       <field>
         <name>NM_CANDIDATO</name>
-        <rename/>
       </field>
       <field>
         <name>NM_URNA_CANDIDATO</name>
-        <rename/>
       </field>
       <field>
         <name>DS_CARGO</name>
-        <rename/>
       </field>
       <field>
         <name>NR_CANDIDATO</name>
-        <rename/>
       </field>
       <field>
         <name>DS_SITUACAO_CANDIDATURA</name>
-        <rename/>
       </field>
       <field>
         <name>CD_SITUACAO_CANDIDATURA</name>
-        <rename/>
       </field>
       <field>
         <name>DS_DETALHE_SITUACAO_CAND</name>
-        <rename/>
       </field>
       <field>
         <name>CD_SIT_TOT_TURNO</name>
-        <rename/>
       </field>
       <field>
         <name>DS_SIT_TOT_TURNO</name>
-        <rename/>
       </field>
       <field>
         <name>NR_PARTIDO</name>
-        <rename/>
       </field>
       <field>
         <name>SG_PARTIDO</name>
-        <rename/>
       </field>
       <field>
         <name>NM_PARTIDO</name>
-        <rename/>
       </field>
       <field>
         <name>SQ_COLIGACAO</name>
-        <rename/>
       </field>
       <field>
         <name>NM_COLIGACAO</name>
-        <rename/>
       </field>
       <field>
         <name>ST_VOTO_EM_TRANSITO</name>
-        <rename/>
       </field>
       <field>
         <name>QT_VOTOS_NOMINAIS</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>carregar_dados</name>
+    <name>carregar_dados_emendas</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -428,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2021/01/21 20:08:43.733</created_date>
+    <created_date>2021/01/31 11:38:39.349</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2021/01/21 20:08:43.733</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2021/01/31 11:38:39.349</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -441,7 +440,7 @@
     <server>127.0.0.1</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>st_gastos_parlamentares</database>
+    <database>dw_gastos_parlamentares</database>
     <port>5432</port>
     <username>postgres</username>
     <password>Encrypted 2be98afc86aa7f2e4cb79ce63db9ca7db</password>
@@ -489,286 +488,18 @@
   </connection>
   <order>
     <hop>
-      <from>lista_arquivos_csv_extraidos</from>
-      <to>carrega_arquivo_csv</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>carrega_arquivo_csv</from>
+      <from>CSV file input</from>
       <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values</from>
-      <to>Insert / update</to>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Insert / update</name>
-    <type>InsertUpdate</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>stage_gastos_parlamentares_psconn</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>public</schema>
-      <table>st0_emendas_parlamentares</table>
-      <key>
-        <name>codigo_da_emenda</name>
-        <field>codigo_da_emenda</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>ano_da_emenda</name>
-        <field>ano_da_emenda</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>codigo_do_autor_da_emenda</name>
-        <field>codigo_do_autor_da_emenda</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>nome_do_autor_da_emenda</name>
-        <field>nome_do_autor_da_emenda</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>numero_da_emenda</name>
-        <field>numero_da_emenda</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>codigo_ibge_municipio</name>
-        <field>codigo_ibge_municipio</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>nome_municipio</name>
-        <field>nome_municipio</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>codigo_ibge_estado</name>
-        <field>codigo_ibge_estado</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>nome_estado</name>
-        <field>nome_estado</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>codigo_regiao</name>
-        <field>codigo_regiao</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>nome_regiao</name>
-        <field>nome_regiao</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>codigo_funcao</name>
-        <field>codigo_funcao</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>nome_funcao</name>
-        <field>nome_funcao</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>codigo_subfuncao</name>
-        <field>codigo_subfuncao</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>nome_subfuncao</name>
-        <field>nome_subfuncao</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>valor_empenhado</name>
-        <field>valor_empenhado</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>valor_liquidado</name>
-        <field>valor_liquidado</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>valor_pago</name>
-        <field>valor_pago</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>valor_restos_a_pagar_inscritos</name>
-        <field>valor_restos_a_pagar_inscritos</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>valor_restos_a_pagar_cancelados</name>
-        <field>valor_restos_a_pagar_cancelados</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>valor_restos_a_pagar_pagos</name>
-        <field>valor_restos_a_pagar_pagos</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>codigo_da_emenda</name>
-        <rename>codigo_da_emenda</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>ano_da_emenda</name>
-        <rename>ano_da_emenda</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>codigo_do_autor_da_emenda</name>
-        <rename>codigo_do_autor_da_emenda</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>nome_do_autor_da_emenda</name>
-        <rename>nome_do_autor_da_emenda</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>numero_da_emenda</name>
-        <rename>numero_da_emenda</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>codigo_ibge_municipio</name>
-        <rename>codigo_ibge_municipio</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>nome_municipio</name>
-        <rename>nome_municipio</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>codigo_ibge_estado</name>
-        <rename>codigo_ibge_estado</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>nome_estado</name>
-        <rename>nome_estado</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>codigo_regiao</name>
-        <rename>codigo_regiao</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>nome_regiao</name>
-        <rename>nome_regiao</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>codigo_funcao</name>
-        <rename>codigo_funcao</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>nome_funcao</name>
-        <rename>nome_funcao</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>codigo_subfuncao</name>
-        <rename>codigo_subfuncao</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>nome_subfuncao</name>
-        <rename>nome_subfuncao</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>valor_empenhado</name>
-        <rename>valor_empenhado</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>valor_liquidado</name>
-        <rename>valor_liquidado</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>valor_pago</name>
-        <rename>valor_pago</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>valor_restos_a_pagar_inscritos</name>
-        <rename>valor_restos_a_pagar_inscritos</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>valor_restos_a_pagar_cancelados</name>
-        <rename>valor_restos_a_pagar_cancelados</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>valor_restos_a_pagar_pagos</name>
-        <rename>valor_restos_a_pagar_pagos</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>carrega_arquivo_csv</name>
+    <name>CSV file input</name>
     <type>CsvInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -778,8 +509,8 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filename>${Internal.Entry.Current.Directory}/extraidos/emendas/Emendas.csv</filename>
-    <filename_field>filename</filename_field>
+    <filename>${Internal.Entry.Current.Directory}/extraidos/Emendas.csv</filename>
+    <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
     <separator>;</separator>
@@ -795,7 +526,7 @@
     <fields>
       <field>
         <name>Código da Emenda</name>
-        <type>Integer</type>
+        <type>String</type>
         <format>#</format>
         <currency>$</currency>
         <decimal>.</decimal>
@@ -833,7 +564,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>17</length>
+        <length>240</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -866,7 +597,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>24</length>
+        <length>120</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -888,7 +619,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>18</length>
+        <length>24</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -910,7 +641,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>12</length>
+        <length>2</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -932,7 +663,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>21</length>
+        <length>32</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -954,7 +685,7 @@
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>48</length>
+        <length>32</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -1034,53 +765,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>lista_arquivos_csv_extraidos</name>
-    <type>GetFileNames</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <filter>
-      <filterfiletype>all_files</filterfiletype>
-    </filter>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
-    <rownum>N</rownum>
-    <isaddresult>Y</isaddresult>
-    <filefield>N</filefield>
-    <rownum_field/>
-    <filename_Field/>
-    <wildcard_Field/>
-    <exclude_wildcard_Field/>
-    <dynamic_include_subfolders>N</dynamic_include_subfolders>
-    <limit>0</limit>
-    <file>
-      <name>${Internal.Entry.Current.Directory}/extraidos/emendas/Emendas.csv</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>144</xloc>
-      <yloc>112</yloc>
+      <xloc>96</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1098,23 +784,23 @@
     <fields>
       <field>
         <name>Código da Emenda</name>
-        <rename>codigo_da_emenda</rename>
+        <rename>codigo</rename>
       </field>
       <field>
         <name>Ano da Emenda</name>
-        <rename>ano_da_emenda</rename>
+        <rename>ano</rename>
       </field>
       <field>
         <name>Código do Autor da Emenda</name>
-        <rename>codigo_do_autor_da_emenda</rename>
+        <rename>codigo_autor</rename>
       </field>
       <field>
         <name>Nome do Autor da Emenda</name>
-        <rename>nome_do_autor_da_emenda</rename>
+        <rename>nome_autor</rename>
       </field>
       <field>
         <name>Número da emenda</name>
-        <rename>numero_da_emenda</rename>
+        <rename>numero</rename>
       </field>
       <field>
         <name>Código IBGE Município</name>
@@ -1191,8 +877,136 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>208</yloc>
+      <xloc>256</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>stage_gastos_parlamentares_psconn</connection>
+    <schema>public</schema>
+    <table>st0_emendas</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>codigo</column_name>
+        <stream_name>codigo</stream_name>
+      </field>
+      <field>
+        <column_name>ano</column_name>
+        <stream_name>ano</stream_name>
+      </field>
+      <field>
+        <column_name>codigo_autor</column_name>
+        <stream_name>codigo_autor</stream_name>
+      </field>
+      <field>
+        <column_name>nome_autor</column_name>
+        <stream_name>nome_autor</stream_name>
+      </field>
+      <field>
+        <column_name>numero</column_name>
+        <stream_name>numero</stream_name>
+      </field>
+      <field>
+        <column_name>codigo_ibge_municipio</column_name>
+        <stream_name>codigo_ibge_municipio</stream_name>
+      </field>
+      <field>
+        <column_name>nome_municipio</column_name>
+        <stream_name>nome_municipio</stream_name>
+      </field>
+      <field>
+        <column_name>codigo_ibge_estado</column_name>
+        <stream_name>codigo_ibge_estado</stream_name>
+      </field>
+      <field>
+        <column_name>nome_estado</column_name>
+        <stream_name>nome_estado</stream_name>
+      </field>
+      <field>
+        <column_name>codigo_regiao</column_name>
+        <stream_name>codigo_regiao</stream_name>
+      </field>
+      <field>
+        <column_name>nome_regiao</column_name>
+        <stream_name>nome_regiao</stream_name>
+      </field>
+      <field>
+        <column_name>codigo_funcao</column_name>
+        <stream_name>codigo_funcao</stream_name>
+      </field>
+      <field>
+        <column_name>nome_funcao</column_name>
+        <stream_name>nome_funcao</stream_name>
+      </field>
+      <field>
+        <column_name>codigo_subfuncao</column_name>
+        <stream_name>codigo_subfuncao</stream_name>
+      </field>
+      <field>
+        <column_name>nome_subfuncao</column_name>
+        <stream_name>nome_subfuncao</stream_name>
+      </field>
+      <field>
+        <column_name>valor_empenhado</column_name>
+        <stream_name>valor_empenhado</stream_name>
+      </field>
+      <field>
+        <column_name>valor_liquidado</column_name>
+        <stream_name>valor_liquidado</stream_name>
+      </field>
+      <field>
+        <column_name>valor_pago</column_name>
+        <stream_name>valor_pago</stream_name>
+      </field>
+      <field>
+        <column_name>valor_restos_a_pagar_inscritos</column_name>
+        <stream_name>valor_restos_a_pagar_inscritos</stream_name>
+      </field>
+      <field>
+        <column_name>valor_restos_a_pagar_cancelados</column_name>
+        <stream_name>valor_restos_a_pagar_cancelados</stream_name>
+      </field>
+      <field>
+        <column_name>valor_restos_a_pagar_pagos</column_name>
+        <stream_name>valor_restos_a_pagar_pagos</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>432</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

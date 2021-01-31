@@ -1,0 +1,14 @@
+https://www.camara.leg.br/cotas/Ano-2021.csv.zip
+https://www.camara.leg.br/cotas/Ano-2020.csv.zip
+https://www.camara.leg.br/cotas/Ano-2019.csv.zip
+https://www.camara.leg.br/cotas/Ano-2018.csv.zip
+https://www.camara.leg.br/cotas/Ano-2017.csv.zip
+https://www.camara.leg.br/cotas/Ano-2016.csv.zip
+https://www.camara.leg.br/cotas/Ano-2015.csv.zip
+https://www.camara.leg.br/cotas/Ano-2014.csv.zip
+https://www.camara.leg.br/cotas/Ano-2013.csv.zip
+https://www.camara.leg.br/cotas/Ano-2012.csv.zip
+https://www.camara.leg.br/cotas/Ano-2011.csv.zip
+https://www.camara.leg.br/cotas/Ano-2010.csv.zip
+https://www.camara.leg.br/cotas/Ano-2009.csv.zip
+https://www.camara.leg.br/cotas/Ano-2008.csv.zip
