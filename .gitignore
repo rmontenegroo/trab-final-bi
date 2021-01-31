@@ -2,3 +2,4 @@
 *.gz
 *.zip
 /.project
+/stages/stage0/step_votos_parlamentares/extraidos/2006/votacao_candidato_munzona_*.txt
