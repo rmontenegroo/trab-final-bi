@@ -21,13 +21,15 @@
 - Transformação dos campos txtdescricao, txtdescricaoespecificao, txtpassageiro e txttrecho em campo único no caso de passagem aérea;
 - Substituição do campo CPF por 'LIDERANÇA' na tabela de gastos quando o gasto é de uma liderança;
 - Substituição de NULL por 'SEM PARTIDO' quando parlamentar não apresenta partido;
-- 
+- Modificados alguns nomes de parlamentares na tabela de emendas para que fossem iguais aos dos campos nm_eleitoral em st1_parlamentares, e nm_senador em st1_senadores;
 
 ### Stage 1
 
-## Fontes de dados disponíveis (Legado):
+## Fontes de dados disponíveis
 
-### Tabela CNPJ (st0_cnpj)
+### Stage 0
+
+#### Tabela CNPJ (st0_cnpj)
 ```
 CREATE TABLE public.st0_cnpj
 (
@@ -48,7 +50,7 @@ CREATE TABLE public.st0_cnpj
 )
 ```
 
-### Tabela Gastos (st0_gastos)
+#### Tabela Gastos (st0_gastos)
 ```
 CREATE TABLE public.st0_gastos
 (
@@ -86,7 +88,7 @@ CREATE TABLE public.st0_gastos
 )
 ```
 
-### Tabela Parlamentares (st0_parlamentares)
+#### Tabela Parlamentares (st0_parlamentares)
 ```
 CREATE TABLE public.st0_parlamentares
 (
@@ -118,7 +120,7 @@ CREATE TABLE public.st0_parlamentares
 )
 ```
 
-### Tabela Votos (st0_votos_parlamentares)
+#### Tabela Votos (st0_votos_parlamentares)
 ```
 CREATE TABLE public.st0_votos_parlamentares
 (
@@ -163,7 +165,7 @@ CREATE TABLE public.st0_votos_parlamentares
 )
 ```
 
-### Tabela Senadores (st0_senadores)
+#### Tabela Senadores (st0_senadores)
 ```
 CREATE TABLE public.st0_senadores
 (
@@ -174,7 +176,7 @@ CREATE TABLE public.st0_senadores
 )
 ```
 
-### Tabela Emendas (st0_emendas)
+#### Tabela Emendas (st0_emendas)
 ```
 CREATE TABLE public.st0_emendas
 (
@@ -199,6 +201,82 @@ CREATE TABLE public.st0_emendas
     valor_restos_a_pagar_inscritos integer,
     valor_restos_a_pagar_cancelados integer,
     valor_restos_a_pagar_pagos integer
+)
+```
+
+### Stage 01
+
+#### Tabela st1_emendas
+```
+CREATE TABLE public.st1_emendas
+(
+    ano integer,
+    nm_autor character varying(240) COLLATE pg_catalog."default",
+    nm_municipio character varying(120) COLLATE pg_catalog."default",
+    nm_estado character varying(24) COLLATE pg_catalog."default",
+    co_regiao character varying(2) COLLATE pg_catalog."default",
+    nm_regiao character varying(16) COLLATE pg_catalog."default",
+    nm_funcao character varying(32) COLLATE pg_catalog."default",
+    nm_subfuncao character varying(64) COLLATE pg_catalog."default",
+    vl_empenhado integer,
+    vl_liquidado integer,
+    vl_pago integer,
+    vl_restos_a_pagar_inscritos integer,
+    vl_restos_a_pagar_cancelados integer,
+    vl_restos_a_pagar_pagos integer
+)
+```
+
+### Tabela st1_gastos
+```
+CREATE TABLE public.st1_gastos
+(
+    nm_parlamentar character varying(320) COLLATE pg_catalog."default",
+    cpf character varying(15) COLLATE pg_catalog."default",
+    sg_uf character varying(2) COLLATE pg_catalog."default",
+    sg_partido character varying(32) COLLATE pg_catalog."default",
+    nm_fornecedor character varying(320) COLLATE pg_catalog."default",
+    cnpjcpf character varying(24) COLLATE pg_catalog."default",
+    dt_emissao date,
+    vl_documento real,
+    vl_glosa real,
+    vl_liquido real,
+    mes integer,
+    ano integer,
+    nu_parcela integer,
+    nu_lote integer,
+    vl_restituicao real,
+    tx_descricao text COLLATE pg_catalog."default"
+)
+```
+
+### Tabela st1_parlamentares
+```
+CREATE TABLE public.st1_parlamentares
+(
+    nm_civil character varying(50) COLLATE pg_catalog."default",
+    sg_partido character varying(16) COLLATE pg_catalog."default",
+    nm_parlamentar character varying(36) COLLATE pg_catalog."default",
+    sg_uf character varying(2) COLLATE pg_catalog."default",
+    nm_eleitoral character varying(36) COLLATE pg_catalog."default",
+    sexo character varying(1) COLLATE pg_catalog."default",
+    dt_nascimento date,
+    sg_ufnascimento character varying(2) COLLATE pg_catalog."default",
+    nm_municipionascimento character varying(32) COLLATE pg_catalog."default",
+    escolaridade character varying(32) COLLATE pg_catalog."default",
+    cpf character varying(11) COLLATE pg_catalog."default",
+    dt_falecimento date
+)
+```
+
+#### Tabela st1_senadores
+```
+CREATE TABLE public.st1_senadores
+(
+    nm_senador character varying(64) COLLATE pg_catalog."default",
+    sexo character(1) COLLATE pg_catalog."default",
+    sg_partido character varying(16) COLLATE pg_catalog."default",
+    sg_uf character(2) COLLATE pg_catalog."default"
 )
 ```
 
