@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <job>
-  <name>baixar_dados_de_2018</name>
+  <name>carga_dw</name>
   <description/>
   <extended_description/>
   <job_version/>
-  <job_status>0</job_status>
   <directory>/</directory>
   <created_user>-</created_user>
-  <created_date>2021/01/22 09:36:26.392</created_date>
+  <created_date>2021/02/07 20:50:14.749</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2021/01/22 09:36:26.392</modified_date>
+  <modified_date>2021/02/07 20:50:14.749</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -288,69 +287,47 @@
   <shared_objects_file/>
   <entries>
     <entry>
-      <name>baixar_arquivo_zip_2018</name>
+      <name>Start</name>
       <description/>
-      <type>HTTP</type>
+      <type>SPECIAL</type>
       <attributes/>
-      <url>https://cdn.tse.jus.br/estatistica/sead/odsele/votacao_candidato_munzona/votacao_candidato_munzona_2018.zip</url>
-      <targetfilename>${Internal.Entry.Current.Directory}/baixados/2018.zip</targetfilename>
-      <file_appended>N</file_appended>
-      <date_time_added>N</date_time_added>
-      <targetfilename_extension/>
-      <uploadfilename/>
-      <run_every_row>N</run_every_row>
-      <url_fieldname/>
-      <upload_fieldname/>
-      <dest_fieldname/>
-      <username/>
-      <password>Encrypted </password>
-      <proxy_host/>
-      <proxy_port/>
-      <non_proxy_hosts/>
-      <addfilenameresult>Y</addfilenameresult>
-      <headers>
-      </headers>
+      <start>Y</start>
+      <dummy>N</dummy>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <intervalSeconds>0</intervalSeconds>
+      <intervalMinutes>60</intervalMinutes>
+      <hour>12</hour>
+      <minutes>0</minutes>
+      <weekDay>1</weekDay>
+      <DayOfMonth>1</DayOfMonth>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
+      <xloc>48</xloc>
       <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>existe 2018.zip?</name>
+      <name>Success</name>
       <description/>
-      <type>FILE_EXISTS</type>
+      <type>SUCCESS</type>
       <attributes/>
-      <filename>${Internal.Entry.Current.Directory}/baixados/2018.zip</filename>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>432</xloc>
+      <xloc>688</xloc>
       <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>existe_dados_2018?</name>
-      <description/>
-      <type>FILE_EXISTS</type>
-      <attributes/>
-      <filename>${Internal.Entry.Current.Directory}/extraidos/2018/leiame.pdf</filename>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>432</xloc>
-      <yloc>432</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>carregar_dados_2018</name>
+      <name>carga_dw_dim_dispendio</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>${Internal.Entry.Current.Directory}/carregar_dados_2018.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/carga_dw_dim_dispendio.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -378,109 +355,210 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
-      <yloc>432</yloc>
+      <xloc>240</xloc>
+      <yloc>320</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>descompacta_zip_2018</name>
+      <name>carga_dw_dim_fornecedor</name>
       <description/>
-      <type>UNZIP</type>
+      <type>TRANS</type>
       <attributes/>
-      <zipfilename>${Internal.Entry.Current.Directory}/baixados/2018.zip</zipfilename>
-      <wildcard/>
-      <wildcardexclude/>
-      <targetdirectory>${Internal.Entry.Current.Directory}/extraidos</targetdirectory>
-      <movetodirectory/>
-      <afterunzip>0</afterunzip>
-      <addfiletoresult>Y</addfiletoresult>
-      <isfromprevious>N</isfromprevious>
-      <adddate>N</adddate>
-      <addtime>N</addtime>
-      <addOriginalTimestamp>N</addOriginalTimestamp>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <rootzip>Y</rootzip>
-      <createfolder>Y</createfolder>
-      <nr_limit>10</nr_limit>
-      <wildcardSource/>
-      <success_condition>success_if_no_errors</success_condition>
-      <iffileexists>OVERWRITE</iffileexists>
-      <create_move_to_directory>N</create_move_to_directory>
-      <setOriginalModificationDate>N</setOriginalModificationDate>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Entry.Current.Directory}/carga_dw_dim_fornecedor.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>656</xloc>
-      <yloc>288</yloc>
+      <xloc>240</xloc>
+      <yloc>240</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Start</name>
+      <name>carga_dw_dim_local</name>
       <description/>
-      <type>SPECIAL</type>
+      <type>TRANS</type>
       <attributes/>
-      <start>Y</start>
-      <dummy>N</dummy>
-      <repeat>N</repeat>
-      <schedulerType>0</schedulerType>
-      <intervalSeconds>0</intervalSeconds>
-      <intervalMinutes>60</intervalMinutes>
-      <hour>12</hour>
-      <minutes>0</minutes>
-      <weekDay>1</weekDay>
-      <DayOfMonth>1</DayOfMonth>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Entry.Current.Directory}/carga_dw_dim_local.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>224</xloc>
-      <yloc>432</yloc>
+      <xloc>240</xloc>
+      <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>Success</name>
+      <name>carga_dim_parlamentar</name>
       <description/>
-      <type>SUCCESS</type>
+      <type>TRANS</type>
       <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Entry.Current.Directory}/carga_dim_parlamentar.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>928</xloc>
-      <yloc>432</yloc>
+      <xloc>240</xloc>
+      <yloc>96</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>carga_dw_dim_partido</name>
+      <description/>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Entry.Current.Directory}/carga_dw_dim_partido.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>240</xloc>
+      <yloc>32</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>carga_tabela_fato</name>
+      <description/>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>${Internal.Entry.Current.Directory}/carga_dw_tab_fato_gastos.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>464</xloc>
+      <yloc>160</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
   <hops>
     <hop>
-      <from>existe 2018.zip?</from>
-      <to>baixar_arquivo_zip_2018</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>existe_dados_2018?</from>
-      <to>carregar_dados_2018</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>carregar_dados_2018</from>
-      <to>Success</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
       <from>Start</from>
-      <to>existe_dados_2018?</to>
+      <to>carga_dw_dim_partido</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -488,17 +566,44 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>existe_dados_2018?</from>
-      <to>existe 2018.zip?</to>
+      <from>Start</from>
+      <to>carga_dim_parlamentar</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
-      <evaluation>N</evaluation>
-      <unconditional>N</unconditional>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>existe 2018.zip?</from>
-      <to>descompacta_zip_2018</to>
+      <from>Start</from>
+      <to>carga_dw_dim_local</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>carga_dw_dim_fornecedor</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>carga_dw_dim_dispendio</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>carga_dw_dim_partido</from>
+      <to>carga_tabela_fato</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -506,8 +611,8 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>descompacta_zip_2018</from>
-      <to>carregar_dados_2018</to>
+      <from>carga_dim_parlamentar</from>
+      <to>carga_tabela_fato</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -515,8 +620,35 @@
       <unconditional>N</unconditional>
     </hop>
     <hop>
-      <from>baixar_arquivo_zip_2018</from>
-      <to>descompacta_zip_2018</to>
+      <from>carga_dw_dim_local</from>
+      <to>carga_tabela_fato</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>carga_dw_dim_fornecedor</from>
+      <to>carga_tabela_fato</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>carga_dw_dim_dispendio</from>
+      <to>carga_tabela_fato</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>carga_tabela_fato</from>
+      <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

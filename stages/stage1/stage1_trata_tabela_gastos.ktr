@@ -506,216 +506,51 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>String operations</from>
-      <to>If field value is null</to>
+      <from>Replace in string</from>
+      <to>trata_trecho</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>If field value is null</from>
+      <from>trata_trecho</from>
+      <to>mapeia_partidos_de_liderancas</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>mapeia_partidos_de_liderancas</from>
+      <to>junta_campos_partidos</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>String operations</from>
       <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Concat fields</from>
-      <to>Table output</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string</from>
-      <to>trata_so_trecho</to>
+      <from>junta_campos_partidos</from>
+      <to>transforma_campos_nulos_em_N/A_ou_zero</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>trata_so_trecho</from>
-      <to>Concat fields</to>
-      <enabled>N</enabled>
+      <from>transforma_campos_nulos_em_N/A_ou_zero</from>
+      <to>trata_caso_LATAM</to>
+      <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>trata_so_trecho</from>
-      <to>Value mapper</to>
+      <from>trata_caso_LATAM</from>
+      <to>cria_campo_natureza</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>cria_campo_natureza</from>
+      <to>cria_as_pks</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>cria_as_pks</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Concat fields</name>
-    <type>ConcatFields</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <separator> </separator>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name/>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>txtdescricao</name>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>txtdescricaoespecificacao</name>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>txtpassageiro</name>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>txttrecho</name>
-        <type>None</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <ConcatFields>
-      <targetFieldName>txtdescricao</targetFieldName>
-      <targetFieldLength>0</targetFieldLength>
-      <removeSelectedFields>Y</removeSelectedFields>
-    </ConcatFields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>928</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>If field value is null</name>
-    <type>IfNull</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <replaceAllByValue/>
-    <replaceAllMask/>
-    <selectFields>Y</selectFields>
-    <selectValuesType>N</selectValuesType>
-    <setEmptyStringAll>N</setEmptyStringAll>
-    <valuetypes>
-      <valuetype>
-        <name>-</name>
-        <value/>
-        <mask/>
-        <set_type_empty_string>N</set_type_empty_string>
-      </valuetype>
-    </valuetypes>
-    <fields>
-      <field>
-        <name>vlrrestituicao</name>
-        <value>0</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>txtpassageiro</name>
-        <value/>
-        <mask/>
-        <set_empty_string>Y</set_empty_string>
-      </field>
-      <field>
-        <name>txttrecho</name>
-        <value/>
-        <mask/>
-        <set_empty_string>Y</set_empty_string>
-      </field>
-      <field>
-        <name>cpf</name>
-        <value>LIDERANÇA</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>txtdescricaoespecificacao</name>
-        <value/>
-        <mask/>
-        <set_empty_string>Y</set_empty_string>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>Replace in string</name>
     <type>ReplaceString</type>
@@ -909,18 +744,6 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txtdescricaoespecificacao</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>^(.+)$</replace_string>
-        <replace_by_string>\($1\)</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
         <in_stream_name>txtpassageiro</in_stream_name>
         <out_stream_name/>
         <use_regex>yes</use_regex>
@@ -944,6 +767,150 @@
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
+      <field>
+        <in_stream_name>sguf</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>NA</replace_string>
+        <replace_by_string>N/A</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>sgpartido</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>(.)DO(.)</replace_string>
+        <replace_by_string>$1do$2</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>sgpartido</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>SDD</replace_string>
+        <replace_by_string>SOLIDARIEDADE</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>sgpartido</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>DEM</replace_string>
+        <replace_by_string>DEMOCRATAS</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>sgpartido</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>^PATRI$</replace_string>
+        <replace_by_string>PATRIOTA</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>sgpartido</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>^PODE$</replace_string>
+        <replace_by_string>PODEMOS</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>sgpartido</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>PP**</replace_string>
+        <replace_by_string>PP</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>sgpartido</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>S.PART.</replace_string>
+        <replace_by_string>SEM PARTIDO</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>^LID\.</replace_string>
+        <replace_by_string>LIDERANCA DO </replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>txnomeparlamentar</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>LIDERANCA DO PARTIDO REPUBLICANO DA ORDEM SOCIAL</replace_string>
+        <replace_by_string>LIDERANCA DO PROS</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>sgpartido</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>^MDB$</replace_string>
+        <replace_by_string>PMDB</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>txtcnpjcpf</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>^0+$</replace_string>
+        <replace_by_string>0{11}</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -954,7 +921,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
+      <xloc>240</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1031,6 +998,9 @@
       <field>
         <name>vlrrestituicao</name>
       </field>
+      <field>
+        <name>nulegislatura</name>
+      </field>
       <select_unspecified>N</select_unspecified>
       <meta>
         <name>datemissao</name>
@@ -1076,8 +1046,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>144</yloc>
+      <xloc>96</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1233,8 +1203,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>144</yloc>
+      <xloc>240</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2089,28 +2059,36 @@ FROM "public".st0_gastos
         <stream_name>vlrliquido</stream_name>
       </field>
       <field>
-        <column_name>mes</column_name>
-        <stream_name>nummes</stream_name>
-      </field>
-      <field>
-        <column_name>ano</column_name>
-        <stream_name>numano</stream_name>
-      </field>
-      <field>
-        <column_name>nu_parcela</column_name>
-        <stream_name>numparcela</stream_name>
-      </field>
-      <field>
-        <column_name>nu_lote</column_name>
-        <stream_name>numlote</stream_name>
-      </field>
-      <field>
         <column_name>vl_restituicao</column_name>
         <stream_name>vlrrestituicao</stream_name>
       </field>
       <field>
         <column_name>tx_descricao</column_name>
         <stream_name>txtdescricao</stream_name>
+      </field>
+      <field>
+        <column_name>trecho</column_name>
+        <stream_name>txttrecho</stream_name>
+      </field>
+      <field>
+        <column_name>nm_passageiro</column_name>
+        <stream_name>txtpassageiro</stream_name>
+      </field>
+      <field>
+        <column_name>especificacao</column_name>
+        <stream_name>txtdescricaoespecificacao</stream_name>
+      </field>
+      <field>
+        <column_name>legislatura</column_name>
+        <stream_name>nulegislatura</stream_name>
+      </field>
+      <field>
+        <column_name>natureza</column_name>
+        <stream_name>natureza</stream_name>
+      </field>
+      <field>
+        <column_name>id</column_name>
+        <stream_name>id</stream_name>
       </field>
     </fields>
     <attributes/>
@@ -2122,13 +2100,400 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
+      <xloc>976</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>trata_so_trecho</name>
+    <name>cria_as_pks</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <valuename>id</valuename>
+    <use_database>N</use_database>
+    <connection/>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>976</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>cria_campo_natureza</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>natureza</field_name>
+      <formula_string>IF(LEN([txtcnpjcpf])>11;"JURÍDICA";"FÍSICA")</formula_string>
+      <value_type>String</value_type>
+      <value_length>8</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field/>
+    </formula>
+    <formula>
+      <field_name>txtcnpjcpf</field_name>
+      <formula_string>IF(AND(ISBLANK([txtcnpjcpf]);EQUALS([txtfornecedor];"LATAM"));"02012862001050";[txtcnpjcpf])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>txtcnpjcpf</replace_field>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>junta_campos_partidos</name>
+    <type>ConcatFields</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <separator/>
+    <enclosure/>
+    <enclosure_forced>N</enclosure_forced>
+    <enclosure_fix_disabled>N</enclosure_fix_disabled>
+    <header>N</header>
+    <footer>N</footer>
+    <format>DOS</format>
+    <compression>None</compression>
+    <encoding/>
+    <endedLine/>
+    <fileNameInField>N</fileNameInField>
+    <fileNameField/>
+    <create_parent_folder>Y</create_parent_folder>
+    <file>
+      <name/>
+      <servlet_output>N</servlet_output>
+      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
+      <extention>txt</extention>
+      <append>N</append>
+      <split>N</split>
+      <haspartno>N</haspartno>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <SpecifyFormat>N</SpecifyFormat>
+      <date_time_format/>
+      <add_to_result_filenames>Y</add_to_result_filenames>
+      <pad>N</pad>
+      <fast_dump>N</fast_dump>
+      <splitevery>0</splitevery>
+    </file>
+    <fields>
+      <field>
+        <name>sgpartido</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+      <field>
+        <name>sgpartido_1</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif/>
+        <trim_type>both</trim_type>
+        <length>-1</length>
+        <precision>-1</precision>
+      </field>
+    </fields>
+    <ConcatFields>
+      <targetFieldName>sgpartido</targetFieldName>
+      <targetFieldLength>0</targetFieldLength>
+      <removeSelectedFields>Y</removeSelectedFields>
+    </ConcatFields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>mapeia_partidos_de_liderancas</name>
+    <type>ValueMapper</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <field_to_use>txnomeparlamentar</field_to_use>
+    <target_field>sgpartido</target_field>
+    <non_match_default/>
+    <fields>
+      <field>
+        <source_value>LIDERANCA DO AVANTE</source_value>
+        <target_value>AVANTE</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO CIDADANIA</source_value>
+        <target_value>CIDADANIA</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PT</source_value>
+        <target_value>PT</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO DEMOCRATAS</source_value>
+        <target_value>DEMOCRATAS</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO NOVO</source_value>
+        <target_value>NOVO</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PDT</source_value>
+        <target_value>PDT</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PHS</source_value>
+        <target_value>PHS</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PODEMOS</source_value>
+        <target_value>PODEMOS</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PROGRESSISTAS</source_value>
+        <target_value>PROGRESSISTAS</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PSD</source_value>
+        <target_value>PSD</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PSDB</source_value>
+        <target_value>PSDB</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PSL</source_value>
+        <target_value>PSL</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PSOL</source_value>
+        <target_value>PSOL</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PTB</source_value>
+        <target_value>PTB</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PTN</source_value>
+        <target_value>PTN</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO SOLIDARIEDADE</source_value>
+        <target_value>SOLIDARIEDADE</target_value>
+      </field>
+      <field>
+        <source_value>LIDERANCA DO PROS</source_value>
+        <target_value>PROS</target_value>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>transforma_campos_nulos_em_N/A_ou_zero</name>
+    <type>IfNull</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <replaceAllByValue/>
+    <replaceAllMask/>
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      <valuetype>
+        <name>-</name>
+        <value/>
+        <mask/>
+        <set_type_empty_string>N</set_type_empty_string>
+      </valuetype>
+    </valuetypes>
+    <fields>
+      <field>
+        <name>txtpassageiro</name>
+        <value>N/A</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>txttrecho</name>
+        <value>N/A</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>cpf</name>
+        <value>N/A</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>txtdescricaoespecificacao</name>
+        <value>N/A</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>sgpartido</name>
+        <value>N/A</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>vlrdocumento</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>vlrglosa</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>vlrliquido</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>vlrrestituicao</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>trata_caso_LATAM</name>
+    <type>Formula</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <formula>
+      <field_name>txtcnpjcpf</field_name>
+      <formula_string>IF(AND(ISBLANK([txtcnpjcpf]);EQUALS([txtfornecedor];"LATAM"));"02012862001050";[txtcnpjcpf])</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>txtcnpjcpf</replace_field>
+    </formula>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>816</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>trata_trecho</name>
     <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
@@ -2269,38 +2634,8 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>768</xloc>
+      <xloc>416</xloc>
       <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Value mapper</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use/>
-    <target_field/>
-    <non_match_default/>
-    <fields>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>768</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
