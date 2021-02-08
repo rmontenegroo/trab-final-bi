@@ -23,6 +23,11 @@
 - Substituição de NULL por 'SEM PARTIDO' quando parlamentar não apresenta partido;
 - Modificados alguns nomes de parlamentares na tabela de emendas para que fossem iguais aos dos campos nm_eleitoral em st1_parlamentares, e nm_senador em st1_senadores;
 
+### Carregar DW
+- A partir dos dados do stage1, montam-se as dimensões e a tabela fato;
+- Para dimensão 'data' especificamente utilizou-se um script cedido pelo professor Anderson. Para todas as demais,
+utilizou-se o PDI;
+
 ## Fontes de dados disponíveis
 
 ### Stage 0
@@ -118,137 +123,35 @@ CREATE TABLE public.st0_parlamentares
 )
 ```
 
-#### Tabela Votos (st0_votos_parlamentares)
-```
-CREATE TABLE public.st0_votos_parlamentares
-(
-    dt_geracao date,
-    hh_geracao character varying(10) COLLATE pg_catalog."default",
-    ano_eleicao integer,
-    cd_tipo_eleicao integer,
-    nm_tipo_eleicao character varying(20) COLLATE pg_catalog."default",
-    nr_turno integer,
-    cd_eleicao integer,
-    ds_eleicao character varying(60) COLLATE pg_catalog."default",
-    dt_eleicao date,
-    tp_abrangencia character(1) COLLATE pg_catalog."default",
-    sg_uf character(2) COLLATE pg_catalog."default",
-    sg_ue character(2) COLLATE pg_catalog."default",
-    nm_ue character varying(24) COLLATE pg_catalog."default",
-    cd_municipio integer,
-    nm_municipio character varying(120) COLLATE pg_catalog."default",
-    nr_zona integer,
-    cd_cargo integer,
-    ds_cargo character varying(28) COLLATE pg_catalog."default",
-    sq_candidato bigint,
-    nr_candidato integer,
-    nm_candidato character varying(256) COLLATE pg_catalog."default",
-    nm_urna_candidato character varying(256) COLLATE pg_catalog."default",
-    nm_social_candidato character varying(256) COLLATE pg_catalog."default",
-    cd_situacao_candidatura integer,
-    ds_situacao_candidatura character varying(24) COLLATE pg_catalog."default",
-    cd_detalhe_situacao_cand integer,
-    ds_detalhe_situacao_cand character varying(64) COLLATE pg_catalog."default",
-    tp_agremiacao character varying(32) COLLATE pg_catalog."default",
-    nr_partido integer,
-    sg_partido character varying(32) COLLATE pg_catalog."default",
-    nm_partido character varying(64) COLLATE pg_catalog."default",
-    sq_coligacao bigint,
-    nm_coligacao character varying(120) COLLATE pg_catalog."default",
-    ds_composicao_coligacao character varying(200) COLLATE pg_catalog."default",
-    cd_sit_tot_turno integer,
-    ds_sit_tot_turno character varying(32) COLLATE pg_catalog."default",
-    st_voto_em_transito boolean,
-    qt_votos_nominais integer
-)
-```
-
-#### Tabela Senadores (st0_senadores)
-```
-CREATE TABLE public.st0_senadores
-(
-    nome_parlamentar character varying(120) COLLATE pg_catalog."default",
-    sexo character varying(16) COLLATE pg_catalog."default",
-    sg_partido character varying(16) COLLATE pg_catalog."default",
-    sg_uf character(2) COLLATE pg_catalog."default"
-)
-```
-
-#### Tabela Emendas (st0_emendas)
-```
-CREATE TABLE public.st0_emendas
-(
-    codigo character varying(15) COLLATE pg_catalog."default",
-    ano integer,
-    codigo_autor integer,
-    nome_autor character varying(240) COLLATE pg_catalog."default",
-    numero bigint,
-    codigo_ibge_municipio integer,
-    nome_municipio character varying(120) COLLATE pg_catalog."default",
-    codigo_ibge_estado integer,
-    nome_estado character varying(24) COLLATE pg_catalog."default",
-    codigo_regiao character varying(2) COLLATE pg_catalog."default",
-    nome_regiao character varying(16) COLLATE pg_catalog."default",
-    codigo_funcao integer,
-    nome_funcao character varying(32) COLLATE pg_catalog."default",
-    codigo_subfuncao integer,
-    nome_subfuncao character varying(64) COLLATE pg_catalog."default",
-    valor_empenhado integer,
-    valor_liquidado integer,
-    valor_pago integer,
-    valor_restos_a_pagar_inscritos integer,
-    valor_restos_a_pagar_cancelados integer,
-    valor_restos_a_pagar_pagos integer
-)
-```
-
 ### Stage 01
 
-#### Tabela st1_emendas
-```
-CREATE TABLE public.st1_emendas
-(
-    ano integer,
-    nm_autor character varying(240) COLLATE pg_catalog."default",
-    nm_municipio character varying(120) COLLATE pg_catalog."default",
-    nm_estado character varying(24) COLLATE pg_catalog."default",
-    co_regiao character varying(2) COLLATE pg_catalog."default",
-    nm_regiao character varying(16) COLLATE pg_catalog."default",
-    nm_funcao character varying(32) COLLATE pg_catalog."default",
-    nm_subfuncao character varying(64) COLLATE pg_catalog."default",
-    vl_empenhado integer,
-    vl_liquidado integer,
-    vl_pago integer,
-    vl_restos_a_pagar_inscritos integer,
-    vl_restos_a_pagar_cancelados integer,
-    vl_restos_a_pagar_pagos integer
-)
-```
-
-### Tabela st1_gastos
+#### Tabela st1_gastos
 ```
 CREATE TABLE public.st1_gastos
 (
-    nm_parlamentar character varying(320) COLLATE pg_catalog."default",
+    nm_parlamentar character varying(40) COLLATE pg_catalog."default",
     cpf character varying(15) COLLATE pg_catalog."default",
-    sg_uf character varying(2) COLLATE pg_catalog."default",
-    sg_partido character varying(32) COLLATE pg_catalog."default",
-    nm_fornecedor character varying(320) COLLATE pg_catalog."default",
+    sg_uf character varying(3) COLLATE pg_catalog."default",
+    sg_partido character varying(16) COLLATE pg_catalog."default",
+    nm_fornecedor character varying(240) COLLATE pg_catalog."default",
     cnpjcpf character varying(24) COLLATE pg_catalog."default",
     dt_emissao date,
-    vl_documento real,
-    vl_glosa real,
-    vl_liquido real,
-    mes integer,
-    ano integer,
-    nu_parcela integer,
-    nu_lote integer,
-    vl_restituicao real,
-    tx_descricao text COLLATE pg_catalog."default"
+    vl_documento double precision,
+    vl_glosa double precision,
+    vl_liquido double precision,
+    vl_restituicao double precision,
+    tx_descricao character varying(320) COLLATE pg_catalog."default",
+    trecho character varying(320) COLLATE pg_catalog."default",
+    nm_passageiro character varying(320) COLLATE pg_catalog."default",
+    especificacao character varying(320) COLLATE pg_catalog."default",
+    legislatura integer,
+    natureza character varying(8) COLLATE pg_catalog."default",
+    id integer NOT NULL DEFAULT nextval('st1_gastos_id_seq'::regclass),
+    CONSTRAINT st1_gastos_pkey PRIMARY KEY (id)
 )
 ```
 
-### Tabela st1_parlamentares
+#### Tabela st1_parlamentares
 ```
 CREATE TABLE public.st1_parlamentares
 (
@@ -263,68 +166,175 @@ CREATE TABLE public.st1_parlamentares
     nm_municipionascimento character varying(32) COLLATE pg_catalog."default",
     escolaridade character varying(32) COLLATE pg_catalog."default",
     cpf character varying(11) COLLATE pg_catalog."default",
-    dt_falecimento date
+    dt_falecimento date,
+    id integer NOT NULL DEFAULT nextval('st1_parlamentares_id_seq'::regclass),
+    CONSTRAINT st1_parlamentares_pkey PRIMARY KEY (id)
 )
 ```
 
-#### Tabela st1_senadores
+#### Tabela st1_partidos
 ```
-CREATE TABLE public.st1_senadores
+CREATE TABLE public.st1_partidos
 (
-    nm_senador character varying(64) COLLATE pg_catalog."default",
-    sexo character(1) COLLATE pg_catalog."default",
     sg_partido character varying(16) COLLATE pg_catalog."default",
-    sg_uf character(2) COLLATE pg_catalog."default"
+    id integer NOT NULL DEFAULT nextval('st1_partidos_id_seq'::regclass),
+    CONSTRAINT st1_partidos_pkey PRIMARY KEY (id)
 )
 ```
 
-## Fatos
+#### Tabela st1_cnpj
+```
+CREATE TABLE public.st1_cnpj
+(
+    id integer NOT NULL DEFAULT nextval('st1_cnpj_id_seq'::regclass),
+    cnpj character varying(21) COLLATE pg_catalog."default",
+    nome_fantasia text COLLATE pg_catalog."default",
+    nm_pais character varying(120) COLLATE pg_catalog."default",
+    uf character varying(2) COLLATE pg_catalog."default",
+    cidade text COLLATE pg_catalog."default",
+    CONSTRAINT st1_cnpj_pkey PRIMARY KEY (id)
+)
+```
 
-### Emenda
-#### Métricas
-- metrica 1
-- metrica 2
-- ...
+### DW
 
-##### Dimensões
-###### Parlamentar
-- atributo 1
-- atributo 2
+#### Tabela Fato Gastos
+```
+CREATE TABLE dw.ft_gastos
+(
+    sk_partido integer NOT NULL,
+    sk_fornecedor integer NOT NULL,
+    sk_dispendio integer NOT NULL,
+    sk_data integer NOT NULL,
+    sk_local integer NOT NULL,
+    vl_glosa real NOT NULL,
+    vl_restituicao character varying COLLATE pg_catalog."default" NOT NULL,
+    vl_documento real NOT NULL,
+    vl_liquido real NOT NULL,
+    legislatura integer NOT NULL,
+    sk_parlamentar integer NOT NULL,
+    sk_gastos integer NOT NULL DEFAULT nextval('dw.ft_gastos_sk_gastos_seq'::regclass),
+    CONSTRAINT ft_gastos_pkey PRIMARY KEY (sk_gastos),
+    CONSTRAINT dim_data_ft_gastos_fk FOREIGN KEY (sk_data)
+        REFERENCES dw.dim_data (sk_data) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT dim_dispendio_ft_gastos_fk FOREIGN KEY (sk_dispendio)
+        REFERENCES dw.dim_dispendio (sk_dispendio) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT dim_fornecedor_ft_gastos_fk FOREIGN KEY (sk_fornecedor)
+        REFERENCES dw.dim_fornecedor (sk_fornecedor) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT dim_local_ft_gastos_fk FOREIGN KEY (sk_local)
+        REFERENCES dw.dim_local (sk_local) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT dim_parlamentar_ft_gastos_fk FOREIGN KEY (sk_parlamentar)
+        REFERENCES dw.dim_parlamentar (sk_parlamentar) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT dim_partido_ft_gastos_fk FOREIGN KEY (sk_partido)
+        REFERENCES dw.dim_partido (sk_partido) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+```
 
-###### Tempo
-- ano
+#### Tabela Dimensão Data
+```
+CREATE TABLE dw.dim_data
+(
+    sk_data integer NOT NULL,
+    nk_data date NOT NULL,
+    desc_data_completa character varying(60) COLLATE pg_catalog."default" NOT NULL,
+    nr_ano integer NOT NULL,
+    nm_trimestre character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    nr_ano_trimestre character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    nr_mes integer NOT NULL,
+    nm_mes character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    ano_mes character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    nr_semana integer NOT NULL,
+    ano_semana character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    nr_dia integer NOT NULL,
+    nr_dia_ano integer NOT NULL,
+    nm_dia_semana character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    flag_final_semana character(3) COLLATE pg_catalog."default" NOT NULL,
+    flag_feriado character(3) COLLATE pg_catalog."default" NOT NULL,
+    nm_feriado character varying(60) COLLATE pg_catalog."default" NOT NULL,
+    dt_final timestamp without time zone NOT NULL,
+    dt_carga timestamp without time zone NOT NULL,
+    CONSTRAINT sk_data_pk PRIMARY KEY (sk_data)
+)
+```
 
-###### Dispendio
-- classe
-- subclasse
+#### Tabela Dimensão Dispendio
+```
+CREATE TABLE dw.dim_dispendio
+(
+    sk_dispendio integer NOT NULL DEFAULT nextval('dw.dim_dispendio_sk_dispendio_seq_1'::regclass),
+    descricao character varying(60) COLLATE pg_catalog."default" NOT NULL,
+    nm_passageiro character varying(120) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
+    trecho character varying(100) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
+    especificacao character varying(20) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
+    CONSTRAINT sk_dispendio PRIMARY KEY (sk_dispendio)
+)
+```
 
-### Despesas
-#### Métricas
-- metrica 1
-- metrica 2
-- ...
+#### Tabela Dimensão Fornecedor
+```
+CREATE TABLE dw.dim_fornecedor
+(
+    sk_fornecedor integer NOT NULL DEFAULT nextval('dw.dim_fornecedor_sk_fornecedor_seq_1'::regclass),
+    natureza character varying(8) COLLATE pg_catalog."default" NOT NULL,
+    nm_fornecedor character varying(150) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
+    cadastro character varying(24) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT sk_fornecedor PRIMARY KEY (sk_fornecedor)
+)
+```
 
-##### Dimensões
-###### Parlamentar
-- atributo 1
-- atributo 2
-- ...
+#### Tabela Dimensão Local
+```
+CREATE TABLE dw.dim_local
+(
+    sk_local integer NOT NULL DEFAULT nextval('dw.dim_local_sk_local_seq_1'::regclass),
+    nm_cidade character varying(32) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
+    sg_estado character(3) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::bpchar,
+    nm_pais character varying(40) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
+    CONSTRAINT sk_local PRIMARY KEY (sk_local)
+)
+```
 
-###### Tempo
-- data
-- ano
-- mês
-- dia
+#### Tabela Dimensão Parlamentar
+```
+CREATE TABLE dw.dim_parlamentar
+(
+    sk_parlamentar integer NOT NULL DEFAULT nextval('dw.dim_parlamentar_sk_parlamentar_seq'::regclass),
+    nm_parlamentar character varying(36) COLLATE pg_catalog."default" NOT NULL,
+    sexo character varying(10) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
+    dt_nascimento date NOT NULL,
+    sg_estado_eleitor character(3) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::bpchar,
+    escolaridade character varying(24) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
+    nk_parlamentar integer,
+    CONSTRAINT sk_parlamentar PRIMARY KEY (sk_parlamentar)
+)
+```
 
-###### Dispendio
-- descrição
-- descrição detalhada
-- ...
+#### Tabela Dimensão Partido
+```
+CREATE TABLE dw.dim_partido
+(
+    sk_partido integer NOT NULL DEFAULT nextval('dw.dim_partido_sk_partido_seq_1'::regclass),
+    nk_partido integer NOT NULL,
+    sg_partido character varying(16) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
+    CONSTRAINT sk_partido PRIMARY KEY (sk_partido)
+)
+```
 
-###### Fornecedor
-- atributo 1
-- atributo 2
-- ...
+#### Dimensões degeneradas
+> A tabela fato Gastos incorporou a dimensão degenerada 'legislatura' que representa o período de 4 anos ao qual aquele
+> gasto é também associado.
 
 ## Padrão de nomenclatura
 
@@ -341,38 +351,12 @@ CREATE TABLE public.st1_senadores
 - fk: *foreign key*
 - pk: *primary key*
 
-## Reunião 03
+### Precisamos
+- Validar o modelo multidimensional;
+- Validar o DW;
+- Finalizar e validar a documentação;
+- Montar os *dashboards*;
 
-### Data: 30.01.2021
-
-### Participantes: 
-- Farid
-- Rodrigo
-
-### Conclusões
-- Trabalharemos com dois assuntos, a pedido do cliente ficcional : emendas parlamentares e despesas de cota parlamentar;
-- Esses dois assuntos constituem dois fatos no nosso BI: emendas e despesas; -> A confirmar com o monitor Fernando na reunião de 02.02.21;
-- As dimensões relacionadas aos fatos não precisam ser comuns, ou seja, emendas pode ter um conjunto de dimensões sem interseção com o fato despesas; 
-- Os atributos das dimensões no modelo multidimensional (MMD) não precisam ter paridade 1:1 com colunas do relacional, ou seja, atributos das dimensões podem ser criados pelo ETL; 
-	Exemplo: Faixa da quantidade de votos que elegeu um parlamentar. Faixa etária de um parlamentar.
-- Os atributos das dimensões possuem compromisso com o problema do negócio e não estritamente ao que estiver disponível no relacional, ou seja, atributos das dimensões podem ser naturais (herdados do relacional),
-	e podem ser artificiais (gerados pelo ETL, com algum tratamento combinando informações do relacional);
-- Fato emenda e fato despesa podem compartilhar a dimensão tempo no MMD? Fato emenda só possui a informação de ano, enquanto o fato despesa, possui ano, mês e dia; -> Como ficaria no MMD? Tabelas separadas ou tabela compartilhada com campos NULL?
-- Da mesma forma que acontece com os atributos das dimensões, as métricas dos fatos não precisam ter paridade 1:1 com campos do relacional, e podem/devem ser calculadas no ETL;
-- Fato despesa não possui dimensão ONDE;
-- Fato emenda possui dimensão ONDE;
-- Ver com o Fernando: queremos transformar a idade do parlamentar na data de um fato em atributo, mas como fazemos isso no modelo a partir da Data de Nascimento?
-
-### Precisamos:
-- Na reunião com o monitor, fechar as questões sobre fatos x dimensões;
-- Definir quais sãos as métricas dos fatos e como serão calculadas;
-- Definir os atributos das dimensões e como são constituídos;
-- Definir se vamos continuar com o atributo de parlamentar que diz a que faixa da quantidade de votos ele recebeu na eleição que o elegeu. São muitos dados no legado para pouca informação;
-- Definir se vamos utilizar UF e município do CNPJ dos fornecedores;
-- Decidir como tratar os CNPJs inconsistentes (sem paridade na tabela de CNPJ) relacionados nos gastos;
-- 
-
-
-
-
-
+### Arquivos
+- [dw.sql.zip](https://drive.google.com/file/d/1o6JPB8I0xb-p34idLfhA6TdZjV9Z4Xev/view?usp=sharing)
+- [projeto-bi-gastos-paralamentares-v0.pbix.zip](https://drive.google.com/file/d/1p6_jt8rAX6Mbu428SvieZ43ZFY0R30Oz/view?usp=sharing)
