@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>stage1_trata_tabela_parlamentares</name>
+    <name>bkp_stage1_trata_tabela_parlamentares</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -489,58 +489,48 @@
   </connection>
   <order>
     <hop>
-      <from>Select values</from>
-      <to>converte_tudo_para_caixa_alta</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>remove_acentos_cedilha_e_ponto_final</from>
-      <to>trata_sigla_partido</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>trata_sigla_partido</from>
-      <to>mapeia_partidos_de_liderancas</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>tabela_parlamentares_st0</from>
-      <to>subst_sgpartido_e_sguf_pelos_seus_pares</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>subst_sgpartido_e_sguf_pelos_seus_pares</from>
       <to>Select values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows</from>
+      <from>Select values</from>
+      <to>String operations</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>String operations</from>
+      <to>If field value is null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>If field value is null</from>
+      <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Replace in string 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string 2</from>
+      <to>ajustes_de_dados</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>ajustes_de_dados</from>
       <to>Add sequence</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Add sequence</from>
-      <to>Table output</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>mapeia_partidos_de_liderancas</from>
-      <to>junta_campos_partidos</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>converte_tudo_para_caixa_alta</from>
-      <to>remove_acentos_cedilha_e_ponto_final</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>junta_campos_partidos</from>
-      <to>trata_null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>trata_null</from>
       <to>Unique rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Unique rows</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -574,13 +564,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
+      <xloc>896</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>trata_null</name>
+    <name>If field value is null</name>
     <type>IfNull</type>
     <description/>
     <distribute>Y</distribute>
@@ -606,44 +596,26 @@
     <fields>
       <field>
         <name>sg_partido</name>
-        <value>N/A</value>
+        <value>SEM PARTIDO</value>
         <mask/>
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
         <name>sg_uf</name>
-        <value>N/A</value>
+        <value>N/I</value>
         <mask/>
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
         <name>sexo</name>
-        <value>N/A</value>
+        <value>N/I</value>
         <mask/>
         <set_empty_string>N</set_empty_string>
       </field>
       <field>
         <name>escolaridade</name>
-        <value>N/A</value>
+        <value>N/I</value>
         <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>nm_municipionascimento</name>
-        <value>N/A</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>sg_ufnascimento</name>
-        <value>N/A</value>
-        <mask/>
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>dt_nascimento</name>
-        <value>0001-01-01</value>
-        <mask>yyyy-MM-dd</mask>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
@@ -656,13 +628,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1200</xloc>
-      <yloc>160</yloc>
+      <xloc>480</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>remove_acentos_cedilha_e_ponto_final</name>
+    <name>Replace in string</name>
     <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
@@ -1141,18 +1113,6 @@
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
-      <field>
-        <in_stream_name>sg_uf</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>NA</replace_string>
-        <replace_by_string>N/A</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1163,13 +1123,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
+      <xloc>608</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>trata_sigla_partido</name>
+    <name>Replace in string 2</name>
     <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
@@ -1186,42 +1146,6 @@
         <use_regex>yes</use_regex>
         <replace_string>(.)DO(.)</replace_string>
         <replace_by_string>$1do$2</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>nm_parlamentar</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>^LID\.</replace_string>
-        <replace_by_string>LIDERANCA DO </replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>nm_parlamentar</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>LIDERANCA DO PARTIDO REPUBLICANO DA ORDEM SOCIAL</replace_string>
-        <replace_by_string>LIDERANCA DO PROS</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>sg_partido</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>^MDB$</replace_string>
-        <replace_by_string>PMDB</replace_by_string>
         <set_empty_string>N</set_empty_string>
         <replace_field_by_string/>
         <whole_word>no</whole_word>
@@ -1312,42 +1236,6 @@
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
-      <field>
-        <in_stream_name>sg_partido</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>PL*</replace_string>
-        <replace_by_string>PL</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>yes</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>nm_eleitoral</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>^LID\.</replace_string>
-        <replace_by_string>LIDERANCA DO </replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>nm_eleitoral</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>LIDERANCA DO PARTIDO REPUBLICANO DA ORDEM SOCIAL</replace_string>
-        <replace_by_string>LIDERANCA DO PROS</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1358,7 +1246,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
+      <xloc>608</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1384,7 +1272,7 @@
         <rename>sg_partido</rename>
       </field>
       <field>
-        <name>txnomeparlamentar</name>
+        <name>nome</name>
         <rename>nm_parlamentar</rename>
       </field>
       <field>
@@ -1397,7 +1285,6 @@
       </field>
       <field>
         <name>sexo</name>
-        <rename/>
       </field>
       <field>
         <name>datanascimento</name>
@@ -1413,11 +1300,16 @@
       </field>
       <field>
         <name>escolaridade</name>
-        <rename/>
+      </field>
+      <field>
+        <name>cpf</name>
+      </field>
+      <field>
+        <name>datafalecimento</name>
+        <rename>dt_falecimento</rename>
       </field>
       <field>
         <name>idecadastro</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -1430,13 +1322,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>400</xloc>
+      <xloc>224</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>converte_tudo_para_caixa_alta</name>
+    <name>String operations</name>
     <type>StringOperations</type>
     <description/>
     <distribute>Y</distribute>
@@ -1564,6 +1456,19 @@
         <digits>none</digits>
         <remove_special_characters>none</remove_special_characters>
       </field>
+      <field>
+        <in_stream_name>cpf</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>only</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -1574,7 +1479,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>352</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1608,6 +1513,10 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+      <field>
+        <column_name>nm_civil</column_name>
+        <stream_name>nm_civil</stream_name>
+      </field>
       <field>
         <column_name>sg_partido</column_name>
         <stream_name>sg_partido</stream_name>
@@ -1645,6 +1554,14 @@
         <stream_name>escolaridade</stream_name>
       </field>
       <field>
+        <column_name>cpf</column_name>
+        <stream_name>cpf</stream_name>
+      </field>
+      <field>
+        <column_name>dt_falecimento</column_name>
+        <stream_name>dt_falecimento</stream_name>
+      </field>
+      <field>
         <column_name>id</column_name>
         <stream_name>id</stream_name>
       </field>
@@ -1658,7 +1575,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1424</xloc>
+      <xloc>1120</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1688,7 +1605,46 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1200</xloc>
+      <xloc>1008</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>ajustes_de_dados</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>nm_eleitoral</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>PAULO FREIRE COSTA</replace_string>
+        <replace_by_string>PAULO FREIRE</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>784</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1705,10 +1661,33 @@
       <schema_name/>
     </partitioning>
     <connection>stage_gastos_parlamentares_psconn</connection>
-    <sql>SELECT DISTINCT g0.txnomeparlamentar, g0.sgpartido, g0.sguf, p0.siglauf, p0.sexo, p0.datanascimento, p0.escolaridade, p0.nomecivil, p0.siglapartido, p0.nome, p0.nomeeleitoral, p0.ufnascimento, p0.municipionascimento, p0.idecadastro
-FROM st0_gastos g0
-LEFT OUTER JOIN st0_parlamentares p0 ON unaccent(LOWER(g0.txnomeparlamentar)) = unaccent(LOWER(p0.nomeeleitoral))
-ORDER BY 1</sql>
+    <sql>SELECT
+  idecadastro
+, nomecivil
+, siglapartido
+, nome
+, siglauf
+, email
+, "data"
+, nomeeleitoral
+, sexo
+, datanascimento
+, ufnascimento
+, municipionascimento
+, escolaridade
+, uri
+, uripartido
+, idlegislatura
+, urlfoto
+, condicaoeleitoral
+, situacao
+, descricaostatus
+, cpf
+, urlwebsite
+, redesocial
+, datafalecimento
+FROM "public".st0_parlamentares
+</sql>
     <limit>0</limit>
     <lookup/>
     <execute_each_row>N</execute_each_row>
@@ -1717,152 +1696,14 @@ ORDER BY 1</sql>
     <cached_row_meta_active>N</cached_row_meta_active>
     <row-meta>
       <value-meta>
-        <type>String</type>
+        <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>txnomeparlamentar</name>
-        <length>320</length>
-        <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
-        <comments>txnomeparlamentar</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>sgpartido</name>
-        <length>32</length>
-        <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
-        <comments>sgpartido</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>sguf</name>
-        <length>2</length>
-        <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
-        <comments>sguf</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>siglauf</name>
-        <length>2</length>
-        <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
-        <comments>siglauf</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>sexo</name>
-        <length>1</length>
-        <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
-        <comments>sexo</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>Date</type>
-        <storagetype>normal</storagetype>
-        <name>datanascimento</name>
-        <length>-1</length>
-        <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
-        <comments>datanascimento</comments>
-        <conversion_Mask/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol>,</grouping_symbol>
-        <currency_symbol/>
-        <trim_type>none</trim_type>
-        <case_insensitive>N</case_insensitive>
-        <collator_disabled>Y</collator_disabled>
-        <collator_strength>0</collator_strength>
-        <sort_descending>N</sort_descending>
-        <output_padding>N</output_padding>
-        <date_format_lenient>N</date_format_lenient>
-        <date_format_locale>en_US</date_format_locale>
-        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
-        <lenient_string_to_number>N</lenient_string_to_number>
-      </value-meta>
-      <value-meta>
-        <type>String</type>
-        <storagetype>normal</storagetype>
-        <name>escolaridade</name>
-        <length>32</length>
-        <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
-        <comments>escolaridade</comments>
-        <conversion_Mask/>
+        <name>idecadastro</name>
+        <length>9</length>
+        <precision>0</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>idecadastro</comments>
+        <conversion_Mask>####0;-####0</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
@@ -1883,7 +1724,7 @@ ORDER BY 1</sql>
         <name>nomecivil</name>
         <length>320</length>
         <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
+        <origin>tabela_parlamentares_st0 2</origin>
         <comments>nomecivil</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -1906,7 +1747,7 @@ ORDER BY 1</sql>
         <name>siglapartido</name>
         <length>32</length>
         <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
+        <origin>tabela_parlamentares_st0 2</origin>
         <comments>siglapartido</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -1929,8 +1770,77 @@ ORDER BY 1</sql>
         <name>nome</name>
         <length>320</length>
         <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
+        <origin>tabela_parlamentares_st0 2</origin>
         <comments>nome</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>siglauf</name>
+        <length>2</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>siglauf</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>email</name>
+        <length>120</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>email</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Date</type>
+        <storagetype>normal</storagetype>
+        <name>data</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>data</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -1952,8 +1862,54 @@ ORDER BY 1</sql>
         <name>nomeeleitoral</name>
         <length>320</length>
         <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
+        <origin>tabela_parlamentares_st0 2</origin>
         <comments>nomeeleitoral</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>sexo</name>
+        <length>1</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>sexo</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Date</type>
+        <storagetype>normal</storagetype>
+        <name>datanascimento</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>datanascimento</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -1975,7 +1931,7 @@ ORDER BY 1</sql>
         <name>ufnascimento</name>
         <length>2</length>
         <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
+        <origin>tabela_parlamentares_st0 2</origin>
         <comments>ufnascimento</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -1998,8 +1954,77 @@ ORDER BY 1</sql>
         <name>municipionascimento</name>
         <length>160</length>
         <precision>-1</precision>
-        <origin>tabela_parlamentares_st0</origin>
+        <origin>tabela_parlamentares_st0 2</origin>
         <comments>municipionascimento</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>escolaridade</name>
+        <length>32</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>escolaridade</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>uri</name>
+        <length>1024</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>uri</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>uripartido</name>
+        <length>1024</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>uripartido</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
@@ -2018,12 +2043,196 @@ ORDER BY 1</sql>
       <value-meta>
         <type>Integer</type>
         <storagetype>normal</storagetype>
-        <name>idecadastro</name>
+        <name>idlegislatura</name>
         <length>9</length>
         <precision>0</precision>
-        <origin>tabela_parlamentares_st0</origin>
-        <comments>idecadastro</comments>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>idlegislatura</comments>
         <conversion_Mask>####0;-####0</conversion_Mask>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>urlfoto</name>
+        <length>1024</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>urlfoto</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>condicaoeleitoral</name>
+        <length>64</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>condicaoeleitoral</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>situacao</name>
+        <length>64</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>situacao</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>descricaostatus</name>
+        <length>2147483647</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>descricaostatus</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>cpf</name>
+        <length>11</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>cpf</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>urlwebsite</name>
+        <length>1024</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>urlwebsite</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>String</type>
+        <storagetype>normal</storagetype>
+        <name>redesocial</name>
+        <length>1024</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>redesocial</comments>
+        <conversion_Mask/>
+        <decimal_symbol>.</decimal_symbol>
+        <grouping_symbol>,</grouping_symbol>
+        <currency_symbol/>
+        <trim_type>none</trim_type>
+        <case_insensitive>N</case_insensitive>
+        <collator_disabled>Y</collator_disabled>
+        <collator_strength>0</collator_strength>
+        <sort_descending>N</sort_descending>
+        <output_padding>N</output_padding>
+        <date_format_lenient>N</date_format_lenient>
+        <date_format_locale>en_US</date_format_locale>
+        <date_format_timezone>America/Sao_Paulo</date_format_timezone>
+        <lenient_string_to_number>N</lenient_string_to_number>
+      </value-meta>
+      <value-meta>
+        <type>Date</type>
+        <storagetype>normal</storagetype>
+        <name>datafalecimento</name>
+        <length>-1</length>
+        <precision>-1</precision>
+        <origin>tabela_parlamentares_st0 2</origin>
+        <comments>datafalecimento</comments>
+        <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
         <grouping_symbol>,</grouping_symbol>
         <currency_symbol/>
@@ -2050,247 +2259,6 @@ ORDER BY 1</sql>
     <GUI>
       <xloc>96</xloc>
       <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>mapeia_partidos_de_liderancas</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <field_to_use>nm_eleitoral</field_to_use>
-    <target_field>sg_partido</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>LIDERANCA DO AVANTE</source_value>
-        <target_value>AVANTE</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO CIDADANIA</source_value>
-        <target_value>CIDADANIA</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PT</source_value>
-        <target_value>PT</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO DEMOCRATAS</source_value>
-        <target_value>DEMOCRATAS</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO NOVO</source_value>
-        <target_value>NOVO</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PDT</source_value>
-        <target_value>PDT</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PHS</source_value>
-        <target_value>PHS</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PODEMOS</source_value>
-        <target_value>PODEMOS</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PROGRESSISTAS</source_value>
-        <target_value>PROGRESSISTAS</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PSD</source_value>
-        <target_value>PSD</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PSDB</source_value>
-        <target_value>PSDB</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PSL</source_value>
-        <target_value>PSL</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PSOL</source_value>
-        <target_value>PSOL</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PTB</source_value>
-        <target_value>PTB</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PTN</source_value>
-        <target_value>PTN</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO SOLIDARIEDADE</source_value>
-        <target_value>SOLIDARIEDADE</target_value>
-      </field>
-      <field>
-        <source_value>LIDERANCA DO PROS</source_value>
-        <target_value>PROS</target_value>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>992</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>subst_sgpartido_e_sguf_pelos_seus_pares</name>
-    <type>Formula</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <formula>
-      <field_name>siglauf</field_name>
-      <formula_string>IF(ISBLANK([siglauf]);[sguf];[siglauf])</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>siglauf</replace_field>
-    </formula>
-    <formula>
-      <field_name>siglapartido</field_name>
-      <formula_string>IF(ISBLANK([siglapartido]);[sgpartido];[siglapartido])</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>siglapartido</replace_field>
-    </formula>
-    <formula>
-      <field_name>nome</field_name>
-      <formula_string>IF(ISBLANK([nome]);[txnomeparlamentar];[nome])</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>nome</replace_field>
-    </formula>
-    <formula>
-      <field_name>nomeeleitoral</field_name>
-      <formula_string>IF(ISBLANK([nomeeleitoral]);[txnomeparlamentar];[nomeeleitoral])</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field>nomeeleitoral</replace_field>
-    </formula>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>256</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>junta_campos_partidos</name>
-    <type>ConcatFields</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <separator/>
-    <enclosure/>
-    <enclosure_forced>N</enclosure_forced>
-    <enclosure_fix_disabled>N</enclosure_fix_disabled>
-    <header>N</header>
-    <footer>N</footer>
-    <format>DOS</format>
-    <compression>None</compression>
-    <encoding/>
-    <endedLine/>
-    <fileNameInField>N</fileNameInField>
-    <fileNameField/>
-    <create_parent_folder>Y</create_parent_folder>
-    <file>
-      <name/>
-      <servlet_output>N</servlet_output>
-      <do_not_open_new_file_init>Y</do_not_open_new_file_init>
-      <extention>txt</extention>
-      <append>N</append>
-      <split>N</split>
-      <haspartno>N</haspartno>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <SpecifyFormat>N</SpecifyFormat>
-      <date_time_format/>
-      <add_to_result_filenames>Y</add_to_result_filenames>
-      <pad>N</pad>
-      <fast_dump>N</fast_dump>
-      <splitevery>0</splitevery>
-    </file>
-    <fields>
-      <field>
-        <name>sg_partido</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-      <field>
-        <name>sg_partido_1</name>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <nullif/>
-        <trim_type>both</trim_type>
-        <length>-1</length>
-        <precision>-1</precision>
-      </field>
-    </fields>
-    <ConcatFields>
-      <targetFieldName>sg_partido</targetFieldName>
-      <targetFieldLength>0</targetFieldLength>
-      <removeSelectedFields>Y</removeSelectedFields>
-    </ConcatFields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>992</xloc>
-      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
