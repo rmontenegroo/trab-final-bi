@@ -506,7 +506,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in string</from>
+      <from>remove_acentos_e_ajusta_algumas_palavras_e_abreviacoes</from>
       <to>trata_trecho</to>
       <enabled>Y</enabled>
     </hop>
@@ -522,7 +522,7 @@
     </hop>
     <hop>
       <from>String operations</from>
-      <to>Replace in string</to>
+      <to>remove_acentos_e_ajusta_algumas_palavras_e_abreviacoes</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -552,7 +552,7 @@
     </hop>
   </order>
   <step>
-    <name>Replace in string</name>
+    <name>remove_acentos_e_ajusta_algumas_palavras_e_abreviacoes</name>
     <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
@@ -756,18 +756,6 @@
         <is_unicode>no</is_unicode>
       </field>
       <field>
-        <in_stream_name>txtpassageiro</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>^(.+)$</replace_string>
-        <replace_by_string>Passageiro: $1</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
         <in_stream_name>sguf</in_stream_name>
         <out_stream_name/>
         <use_regex>no</use_regex>
@@ -911,6 +899,30 @@
         <case_sensitive>no</case_sensitive>
         <is_unicode>no</is_unicode>
       </field>
+      <field>
+        <in_stream_name>sgpartido</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>^MDB\*$</replace_string>
+        <replace_by_string>PMDB</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>sgpartido</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>^PL\*$</replace_string>
+        <replace_by_string>PL</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -922,7 +934,7 @@
     </remotesteps>
     <GUI>
       <xloc>240</xloc>
-      <yloc>144</yloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2176,7 +2188,7 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
+      <xloc>832</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2262,7 +2274,7 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
+      <xloc>640</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2360,7 +2372,7 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
+      <xloc>464</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2454,7 +2466,7 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
+      <xloc>640</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2487,7 +2499,7 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
+      <xloc>832</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2634,8 +2646,8 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>144</yloc>
+      <xloc>464</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
