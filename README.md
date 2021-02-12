@@ -26,7 +26,7 @@
     - [2008](https://www.camara.leg.br/cotas/Ano-2008.csv.zip)
 - dados de parlamentares:
     - [lista](https://dadosabertos.camara.leg.br/api/v2/deputados)
-    - [detalhes](https://dadosabertos.camara.leg.br/api/v2/deputados/[ID_DEPUTADO])
+    - [detalhes](https://dadosabertos.camara.leg.br/api/v2/deputados/idDeputado)
 
 ## Etapas do ETL:
 
