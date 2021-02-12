@@ -8,7 +8,7 @@
 - Rodrigo
 
 ## Fontes de dados:
-- [dados de empresas](https://brasil.io/dataset/socios-brasil/files/)
+- [dados de empresas](https://data.brasil.io/dataset/socios-brasil/empresas.csv.gz)
 - dados de gastos parlamentares:
     - [2021](https://www.camara.leg.br/cotas/Ano-2021.csv.zip)
     - [2020](https://www.camara.leg.br/cotas/Ano-2020.csv.zip)
