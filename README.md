@@ -361,3 +361,4 @@ CREATE TABLE dw.dim_partido
 - [dw.sql.zip](https://drive.google.com/file/d/1RDmEpfAIswSClv52vw3njmDMy_S3csUs/view?usp=sharing)
 - [projeto-bi-gastos-paralamentares-v0.pbix.zip](https://drive.google.com/file/d/1p6_jt8rAX6Mbu428SvieZ43ZFY0R30Oz/view?usp=sharing)
 - [projeto-bi-gastos-paralamentares-v0.1.pbix.zip](https://drive.google.com/file/d/1S93UG-PCh1Uc_LknvmTqTUl_WAy1EcvP/view?usp=sharing)
+- [projeto-bi-gastos-paralamentares-v0.2.pbix.zip](https://drive.google.com/file/d/1nmTHuA5PreAV-j_S5SE8htkhrYJ1lr2K/view?usp=sharing)
