@@ -7,7 +7,32 @@
 - Luiz
 - Rodrigo
 
+## Fontes de dados:
+- [dados de empresas](https://brasil.io/dataset/socios-brasil/files/)
+- dados de gastos parlamentares:
+    - [2021](https://www.camara.leg.br/cotas/Ano-2021.csv.zip)
+    - [2020](https://www.camara.leg.br/cotas/Ano-2020.csv.zip)
+    - [2019](https://www.camara.leg.br/cotas/Ano-2019.csv.zip)
+    - [2018](https://www.camara.leg.br/cotas/Ano-2018.csv.zip)
+    - [2017](https://www.camara.leg.br/cotas/Ano-2017.csv.zip)
+    - [2016](https://www.camara.leg.br/cotas/Ano-2016.csv.zip)
+    - [2015](https://www.camara.leg.br/cotas/Ano-2015.csv.zip)
+    - [2014](https://www.camara.leg.br/cotas/Ano-2014.csv.zip)
+    - [2013](https://www.camara.leg.br/cotas/Ano-2013.csv.zip)
+    - [2012](https://www.camara.leg.br/cotas/Ano-2012.csv.zip)
+    - [2011](https://www.camara.leg.br/cotas/Ano-2011.csv.zip)
+    - [2010](https://www.camara.leg.br/cotas/Ano-2010.csv.zip)
+    - [2009](https://www.camara.leg.br/cotas/Ano-2009.csv.zip)
+    - [2008](https://www.camara.leg.br/cotas/Ano-2008.csv.zip)
+- dados de parlamentares:
+    - [lista](https://dadosabertos.camara.leg.br/api/v2/deputados)
+    - [detalhes](https://dadosabertos.camara.leg.br/api/v2/deputados/[ID_DEPUTADO])
+
 ## Etapas do ETL:
+
+## TODO
+- Descrever etapas com screenshots e texto descritivo
+- Substituir script de criação de tabelas do DW aqui por link para schemas_and_data
 
 ### Stage 0
 - Obtenção dos dados brutos de diversas fontes: download de arquivos CSV e consumo de APIs;
@@ -273,7 +298,7 @@ CREATE TABLE dw.dim_data
 ```
 CREATE TABLE dw.dim_dispendio
 (
-    sk_dispendio integer NOT NULL DEFAULT nextval('dw.dim_dispendio_sk_dispendio_seq_1'::regclass),
+    sk_dispendio serial PRIMARY KEY,
     descricao character varying(60) COLLATE pg_catalog."default" NOT NULL,
     nm_passageiro character varying(120) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
     trecho character varying(100) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
@@ -286,7 +311,7 @@ CREATE TABLE dw.dim_dispendio
 ```
 CREATE TABLE dw.dim_fornecedor
 (
-    sk_fornecedor integer NOT NULL DEFAULT nextval('dw.dim_fornecedor_sk_fornecedor_seq_1'::regclass),
+    sk_fornecedor serial PRIMARY KEY,
     natureza character varying(8) COLLATE pg_catalog."default" NOT NULL,
     nm_fornecedor character varying(150) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
     cadastro character varying(24) COLLATE pg_catalog."default" NOT NULL,
@@ -298,7 +323,7 @@ CREATE TABLE dw.dim_fornecedor
 ```
 CREATE TABLE dw.dim_local
 (
-    sk_local integer NOT NULL DEFAULT nextval('dw.dim_local_sk_local_seq_1'::regclass),
+    sk_local serial PRIMARY KEY,
     nm_cidade character varying(32) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
     sg_estado character(3) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::bpchar,
     nm_pais character varying(40) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
@@ -310,7 +335,7 @@ CREATE TABLE dw.dim_local
 ```
 CREATE TABLE dw.dim_parlamentar
 (
-    sk_parlamentar integer NOT NULL DEFAULT nextval('dw.dim_parlamentar_sk_parlamentar_seq'::regclass),
+    sk_parlamentar serial PRIMARY KEY,
     nm_parlamentar character varying(36) COLLATE pg_catalog."default" NOT NULL,
     sexo character varying(10) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
     dt_nascimento date NOT NULL,
@@ -325,7 +350,7 @@ CREATE TABLE dw.dim_parlamentar
 ```
 CREATE TABLE dw.dim_partido
 (
-    sk_partido integer NOT NULL DEFAULT nextval('dw.dim_partido_sk_partido_seq_1'::regclass),
+    sk_partido serial PRIMARY KEY,
     nk_partido integer NOT NULL,
     sg_partido character varying(16) COLLATE pg_catalog."default" NOT NULL DEFAULT 'N/A'::character varying,
     CONSTRAINT sk_partido PRIMARY KEY (sk_partido)
@@ -337,7 +362,6 @@ CREATE TABLE dw.dim_partido
 > gasto é também associado.
 
 ## Padrão de nomenclatura
-
 - sg: sigla
 - dt: data
 - vl: valor
@@ -351,14 +375,6 @@ CREATE TABLE dw.dim_partido
 - fk: *foreign key*
 - pk: *primary key*
 
-### Precisamos
-- Validar o modelo multidimensional;
-- Validar o DW;
-- Finalizar e validar a documentação;
-- Montar os *dashboards*;
-
 ### Arquivos
-- [dw.sql.zip](https://drive.google.com/file/d/1RDmEpfAIswSClv52vw3njmDMy_S3csUs/view?usp=sharing)
-- [projeto-bi-gastos-paralamentares-v0.pbix.zip](https://drive.google.com/file/d/1p6_jt8rAX6Mbu428SvieZ43ZFY0R30Oz/view?usp=sharing)
-- [projeto-bi-gastos-paralamentares-v0.1.pbix.zip](https://drive.google.com/file/d/1S93UG-PCh1Uc_LknvmTqTUl_WAy1EcvP/view?usp=sharing)
 - [projeto-bi-gastos-paralamentares-v0.2.pbix.zip](https://drive.google.com/file/d/1nmTHuA5PreAV-j_S5SE8htkhrYJ1lr2K/view?usp=sharing)
+
