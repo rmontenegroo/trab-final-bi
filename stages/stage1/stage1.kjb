@@ -483,7 +483,7 @@
       <to>trata_tabela_gastos</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
@@ -492,7 +492,7 @@
       <to>trata_tabela_parlamentares</to>
       <from_nr>0</from_nr>
       <to_nr>1</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
     </hop>
