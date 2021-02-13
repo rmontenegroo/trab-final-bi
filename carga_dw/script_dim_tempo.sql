@@ -1,27 +1,27 @@
 ---script dim_tempo versão:20201217
 ---prof. anderson nascimento
-create table "dw".dim_data (
-sk_data integer not null,
-nk_data date not null,
-desc_data_completa varchar(60) not null,
-nr_ano integer not null,
-nm_trimestre varchar(20) not null,
-nr_ano_trimestre varchar(20) not null,
-nr_mes integer not null,
-nm_mes varchar(20) not null,
-ano_mes varchar(20) not null,
-nr_semana integer not null,
-ano_semana varchar(20) not null,
-nr_dia integer not null,
-nr_dia_ano integer not null,
-nm_dia_semana varchar(20) not null,
-flag_final_semana char(3) not null,
-flag_feriado char(3) not null,
-nm_feriado varchar(60) not null,
-dt_final timestamp not null,
-dt_carga timestamp not null,
-constraint sk_data_pk primary key (sk_data)
-);
+-- create table "dw".dim_data (
+-- sk_data integer not null,
+-- nk_data date not null,
+-- desc_data_completa varchar(60) not null,
+-- nr_ano integer not null,
+-- nm_trimestre varchar(20) not null,
+-- nr_ano_trimestre varchar(20) not null,
+-- nr_mes integer not null,
+-- nm_mes varchar(20) not null,
+-- ano_mes varchar(20) not null,
+-- nr_semana integer not null,
+-- ano_semana varchar(20) not null,
+-- nr_dia integer not null,
+-- nr_dia_ano integer not null,
+-- nm_dia_semana varchar(20) not null,
+-- flag_final_semana char(3) not null,
+-- flag_feriado char(3) not null,
+-- nm_feriado varchar(60) not null,
+-- dt_final timestamp not null,
+-- dt_carga timestamp not null,
+-- constraint sk_data_pk primary key (sk_data)
+-- );
 
 insert into "dw".dim_data
 select to_number(to_char(datum,'yyyymmdd'), '99999999') as sk_tempo,
