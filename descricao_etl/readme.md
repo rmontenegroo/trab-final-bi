@@ -37,17 +37,21 @@ informa-se em um arquivo CSV a lista desses anos. A partir daí, o PDI irá baix
 a um dos arquivos de dados, descompactados e então carregados na tabela *st0_gastos*.
 
 ![st0_dados_gastos_parlamentares_obtem_arquivo_zip](img/st0_dados_gastos_parlamentares_obtem_arquivo_zip.png)
+
 <sup>O PDI verifica se o arquivo zip já existe, senão faz o download e então os extrai</sup>
 
 ![st0_dados_gastos_parlamentares_carga_banco](img/st0_dados_gastos_parlamentares_carga_banco.png)
+
 <sup>Na última etapa deste *step*, o PDI faz a carga dos dados na tabela *st0_gastos*</sup>
 
 #### *Step*: Obtém detalhes de parlamentares
 
 ![st0_detalhes_parlamentares](img/st0_detalhes_parlamentares.png)
+
 <sup>Visão macro do *step*</sup>
 
 ![st0_detalhes_parlamentares_acessos](img/st0_detalhes_parlamentares_acessos.png)
+
 <sup>Visão detalhada do *step*: Obtém detalhes de parlamentares</sup>
 
 A partir dos dados de gastos de parlamentares, consome-se uma API pública da câmara para se obter 
@@ -59,6 +63,7 @@ a partir do seu nome, para então obter os detalhes.
 #### *Step*: Obtém dados de CNPJ
 
 ![st0_dados_cnpj](img/st0_dados_cnpj.png)
+
 <sup>*Step*: Obtém dados de CNPJ</sup>
 
 Nesse *step* o PDI irá abrir um arquivo CSV que contém os dados de CNPJ criado a partir de 
@@ -68,6 +73,7 @@ alguns campos com valor *NULL*.
 ### Tratamento
 
 ![stage1](img/stage1.png)
+
 <sup>Visão macro do *stage1*: Trata tabela gastos, trata tabela parlamentares, trata tabela CNPJ, cria tabela partidos</sup>
 
 Uma vez que os dados brutos estão todos carregados no banco de dados, fica mais fácil a análise
@@ -76,6 +82,7 @@ dos dados, da estrutura e de como podem se relacionar.
 #### *Step*: Trata tabela de gastos
 
 ![st1_trata_tabela_gastos](img/st1_trata_tabela_gastos.png)
+
 <sup>Tratamentos aplicados à tabela de gastos</sup>
 
 Neste *step* são realizados alguns tratamentos na tabela st0_gastos:
@@ -98,6 +105,7 @@ Neste *step* são realizados alguns tratamentos na tabela st0_gastos:
 #### *Step*: Trata tabela de parlamentares
 
 ![st1_trata_tabela_parlamentares](img/st1_trata_tabela_parlamentares.png)
+
 <sup>*Step*: Trata tabela de parlamentares</sup>
 
 Deveria ser possível relacionar os parlamentares da tabela de gastos com a tabela de parlamentares pelo
@@ -120,6 +128,7 @@ Neste *step*, faz-se:
 #### *Step*: Cria tabela de partidos
 
 ![st1_cria_tabela_partidos](img/st1_cria_tabela_partidos.png)
+
 <sup>*Step*: Cria tabela de partidos</sup>
 
 O modelo multi-dimensional prevê a existência de uma dimensão partido. Como não temos uma 
@@ -140,6 +149,8 @@ Por último, é feita a carga na tabela *st1_partidos* no Postgres.
 
 ![st1_trata_tabela_cnpj](img/st1_trata_tabela_cnpj.png)
 
+<sup>*Step*: Trata tabela de CNPJ</sup>
+
 Neste *step*, faz-se:
 1. Os dados são carregados da *st0_cnpj* de todos os CNPJ que aparecem na tabela de gastos (*st0_gastos*);
 2. Se o nome fantasia não existir, é utilizado a razão social;
@@ -151,6 +162,7 @@ Neste *step*, faz-se:
 ### Carga
 
 ![carga_dw](img/carga_dw.png)
+
 <sup>Visão macro da fase de carga</sup>
 
 Nesta fase do ET**L**, são criadas as tabelas de dimensões:
@@ -176,6 +188,7 @@ CREATE TABLE dw.dim_partido
 ```
 
 ![carga_dw_dim_partido](img/carga_dw_dim_partido.png)
+
 <sup>Carga da dimensão partido</sup>
 
 Como se vê acima, esse *step* é bastante simples, e a "inteligência" está toda no SELECT
@@ -207,6 +220,7 @@ CREATE TABLE dw.dim_parlamentar
 ```
 
 ![carga_dw_dim_parlamentar](img/carga_dw_dim_parlamentar.png)
+
 <sup>Carga da dimensão parlamentar</sup>
 
 Os dados da dimensão parlamentar são obtidos da tabela *st1_parlamentares*.
@@ -233,6 +247,7 @@ CREATE TABLE dw.dim_local
 ```
 
 ![carga_dw_dim_local](img/carga_dw_dim_local.png)
+
 <sup>Carga da dimensão local</sup>
 
 Os dados da dimensão local são obtidos do cruzamento das tabelas *st1_gastos* e *st1_cnpj*.
@@ -248,6 +263,7 @@ FULL JOIN st1_cnpj c1 ON c1.cnpj = g1.cnpjcpf
 ```
 
 ![carga_dw_dim_local_tratamento](img/carga_dw_dim_local_tratamento.png)
+
 <sup>Para os casos sem localização, os campos recebem "N/A"</sup>
 
 Uma vez carregados os dados das tabelas do *stage1*, é tratado o caso de gastos sem localização.
@@ -267,6 +283,7 @@ CREATE TABLE dw.dim_fornecedor
 ```
 
 ![carga_dw_dim_fornecedor](img/carga_dw_dim_fornecedor.png)
+
 <sup>Carga da dimensão fornecedor</sup>
 
 A dimensão fornecedor pode ser tanto uma pessoa física ou jurídica. Quando é uma pessoa jurídica,
@@ -285,6 +302,7 @@ Quando é uma pessoa física, o campo *nome_fantasia* é (como esperado) *NULL*,
 o campo *nm_fornecedor* é utilizado.
 
 ![carga_dw_dim_fornecedor_tratamento](img/carga_dw_dim_fornecedor_tratamento.png)
+
 <sup>Pessoas físicas terão campo *nm_fornecedor* da tabela de gastos</sup>
 
 Como esta etapa anterior pode gerar registros repetidos, o próximo *step* descarta essas
@@ -305,6 +323,7 @@ CREATE TABLE dw.dim_dispendio
 ```
 
 ![carga_dw_dim_dispendio](img/carga_dw_dim_dispendio.png)
+
 <sup>Carga da dimensão dispendio</sup>
 
 Os dados da dimensão dispendio são obtidos exclusivamente da tabela de gastos.
@@ -347,6 +366,7 @@ CREATE TABLE dw.dim_data
 ```
 
 ![carga_dw_dim_data](img/carga_dw_dim_data.png)
+
 <sup>Carga da dimensão data</sup>
 
 Os dados da dimensão data são gerados pelo *script*:
@@ -429,6 +449,7 @@ CREATE TABLE dw.ft_gastos
 ```
 
 ![carga_dw_ft_gastos](img/carga_dw_ft_gastos.png)
+
 <sup>Carga da tabela fato gastos</sup>
 
 Os dados da tabela fato precisam incluir os atributos do fato mas também todas as *surrogate keys*
