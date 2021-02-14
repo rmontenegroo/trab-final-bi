@@ -1,0 +1,82 @@
+CREATE TABLE public.st0_gastos
+(
+	id serial PRIMARY KEY,
+    txnomeparlamentar character varying(320),
+    cpf character varying(15),
+    idecadastro integer,
+    nucarteiraparlamentar integer,
+    nulegislatura integer,
+    sguf character(2),
+    sgpartido character varying(32),
+    codlegislatura integer,
+    numsubcota integer,
+    txtdescricao character varying(320),
+    numespecificacaosubcota integer,
+    txtdescricaoespecificacao character varying(320),
+    txtfornecedor character varying(320),
+    txtcnpjcpf character varying(24),
+    txtnumero character varying(160),
+    indtipodocumento integer,
+    datemissao date,
+    vlrdocumento double precision,
+    vlrglosa double precision,
+    vlrliquido double precision,
+    nummes integer,
+    numano integer,
+    numparcela integer,
+    txtpassageiro character varying(320),
+    txttrecho character varying(320),
+    numlote integer,
+    numressarcimento integer,
+    vlrrestituicao double precision,
+    nudeputadoid integer,
+    idedocumento integer,
+    urldocumento character varying(1024)
+);
+
+CREATE TABLE public.st0_cnpj
+(
+    cnpj character varying(21) PRIMARY KEY,
+    razao_social character varying(320),
+    nome_fantasia character varying(120),
+    nm_cidade_exterior character varying(120),
+    nm_pais character varying(120),
+    data_inicio_atividade date,
+    descricao_tipo_logradouro character varying(32),
+    logradouro character varying(240),
+    numero character varying(12),
+    complemento character varying(240),
+    bairro character varying(120),
+    cep character varying(12),
+    uf character varying(2),
+    municipio character varying(32)
+);
+
+CREATE TABLE public.st0_parlamentares
+(
+    idecadastro integer PRIMARY KEY,
+    nomecivil character varying(320),
+    siglapartido character varying(32),
+    nome character varying(320),
+    siglauf character(2),
+    email character varying(120),
+    data date,
+    nomeeleitoral character varying(320),
+    sexo character(1),
+    datanascimento date,
+    ufnascimento character(2),
+    municipionascimento character varying(160),
+    escolaridade character varying(32),
+    uri character varying(1024),
+    uripartido character varying(1024),
+    idlegislatura integer,
+    urlfoto character varying(1024),
+    condicaoeleitoral character varying(64),
+    situacao character varying(64),
+    descricaostatus text,
+    cpf character varying(11),
+    urlwebsite character varying(1024),
+    redesocial character varying(1024),
+    datafalecimento date
+);
+
