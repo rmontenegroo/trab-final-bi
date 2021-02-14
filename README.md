@@ -1,13 +1,13 @@
 # Projeto Final de BI 2020.2
 
-## Integrantes:
+## Integrantes
 - David
 - Farid
 - Leonardo
 - Luiz
 - Rodrigo
 
-## Fontes de dados:
+## Fontes de dados
 - [dados de empresas](https://www.kaggle.com/gui230/cnpj-brasil-05092020)
     - [arquivo csv](https://storage.googleapis.com/kaggle-data-sets/1072214/1814771/compressed/csv_dados_qsa_cnpj_05-09-20/cnpj_dados_cadastrais_pj.csv.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com%40kaggle-161607.iam.gserviceaccount.com%2F20210213%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20210213T194048Z&X-Goog-Expires=259199&X-Goog-SignedHeaders=host&X-Goog-Signature=714e44986ebbbceb4dc916bbd0f10b5075356ed877a0592a2a5636456f523475a32c148e99f4802000b1c50749d2561b916a3b5663113f4dd787842cff3c1db3a35fc575d4faa32ce206a1441b0a44bc1e748e538484789cbe48228a105b345e62d0f63612346c5b56344b9a2eeaa4894ed0a96ca8b3a3dc88392b0c95e3aeedfa1819f9bfd25bd13e6bd6667c51053ee0e9d9c80b492356af873baaae160d4f23a467dad4d9bc2f0109c7c17e184ef9b66519e704326e20eded15bc330dda2a6adc37b734dc2396e6c809a99c229ec0abc4efce87d5b9345aca03196628157e7ca3cb249de7d40dff9bcd3c23b8ce393be822a5ddef768472d08a061016efc5)
 - dados de gastos parlamentares:
