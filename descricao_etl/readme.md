@@ -7,6 +7,7 @@ disponibilizados pela Receita Federal. Essas fontes estão listadas [aqui](../RE
 ### Visão geral
 
 ![visão geral](img/etl.png)
+
 <sup>Processo de ETL dividio em 3 etapas: *stage0*, *stage1* e carga</sup>
 
 Como pode ser visto na figura acima, o processo foi dividido em três macro etapas: *stage0*, *stage1* e carga.
@@ -17,14 +18,17 @@ A fase de extração no projeto foi nomeada de *stage0*. Como os dados não esta
 em um banco relacional essa fase faz a carga dos dados brutos em tabelas do Postgres.
 
 ![stage0](img/stage0.png)
+
 <sup>Steps do *stage0* ou extração</sup>
 
 #### *Step*: Obtém dados gastos parlamentares
 
 ![st0_dados_gastos_parlamentares](img/st0_dados_gastos_parlamentares.png)
+
 <sup>Visão macro do *step* Obtém dados de gastos parlamentares</sup>
 
 ![st0_dados_gastos_parlamentares_obtem_anos](img/st0_dados_gastos_parlamentares_obtem_anos.png)
+
 <sup>Obtém a lista de anos como parâmetro</sup>
 
 Os dados de gastos parlamentares estão separados em arquivos CSV que são atualizados diariamente,
