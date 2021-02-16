@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<architect-project version="1.0" appversion="1.0.9">
+ <project-name>modelo_multidimensional-v1</project-name>
+ <print-settings numCopies="1" zoom="1.0" pageNumbersPrinted="true" orientation="1" paperWidth="612.0" paperHeight="792.0" leftBorder="50.0" rightBorder="50.0" topBorder="50.0" bottomBorder="50.0" />
+ <project-data-sources>
+  <data-source id="DS0">
+   <property key="Logical" value="PlayPen Database" />
+  </data-source>
+  <data-source id="DS2">
+   <property key="Connection Type" value="PostgreSQL" />
+   <property key="Logical" value="localhost" />
+   <property key="JDBC URL" value="jdbc:postgresql://localhost:5432/dw_gastos_parlamentares" />
+   <property key="UID" value="postgres" />
+   <property key="PWD" value="senha" />
+   <property key="ca.sqlpower.architect.etl.kettle.database" value="" />
+   <property key="ca.sqlpower.architect.etl.kettle.port" value="" />
+   <property key="ca.sqlpower.architect.etl.kettle.hostname" value="" />
+   <property key="ca.sqlpower.architect.etl.kettle.repos.login" value="" />
+   <property key="ca.sqlpower.architect.etl.kettle.repos.password" value="" />
+  </data-source>
+ </project-data-sources>
+ <source-databases>
+  <database id="DB0" populated="true" UUID="bea36b38-5341-42eb-9166-98ae6770b94b" dbcs-ref="DS2" name="localhost" physicalName="localhost" >
+   <catalog id="CAT1" populated="true" UUID="0010b720-e714-4619-bf9c-389518f3c90c" name="dw_gastos_parlamentares" nativeTerm="database" physicalName="dw_gastos_parlamentares" >
+    <schema id="SCH2" populated="true" UUID="85450e31-c31b-41bc-8a7c-b5ad27cfa6dd" name="dw" nativeTerm="schema" physicalName="dw" >
+     <table id="TAB3" populated="true" UUID="60498fd5-e77f-41b7-a7c0-ae181663a16e" name="dim_data" objectType="TABLE" physicalName="dim_data" >
+      <remarks></remarks>
+      <folder id="FOLTAB31" populated="true" name="Columns" physicalName="Columns" type="1">
+       <column id="COL4" populated="true" UUID="c46daf67-f0f0-4ceb-bb49-54e0320df0df" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_data_sk_data_seq&apos;::regclass)" name="sk_data" nullable="0" physicalName="sk_data" precision="10" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="serial" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL5" populated="true" UUID="5c3ef99e-6ef9-41bd-8bea-a0969ec2f503" autoIncrement="false" name="nk_data" nullable="0" physicalName="nk_data" precision="13" referenceCount="1" scale="0" sourceDataTypeName="date" type="91" >
+        <remarks></remarks>
+       </column>
+       <column id="COL6" populated="true" UUID="2b031a8b-a20b-4a78-a60e-56fcd97a7da9" autoIncrement="false" name="desc_data_completa" nullable="0" physicalName="desc_data_completa" precision="60" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL7" populated="true" UUID="28897237-d0df-4da9-b55c-21e6825990e7" autoIncrement="false" name="nr_ano" nullable="0" physicalName="nr_ano" precision="10" referenceCount="1" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL8" populated="true" UUID="518a4c02-f675-4700-b71b-69ac7aba8342" autoIncrement="false" name="nm_trimestre" nullable="0" physicalName="nm_trimestre" precision="20" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL9" populated="true" UUID="db9dba45-3724-412d-acb9-d3b3e30d4496" autoIncrement="false" name="nr_ano_trimestre" nullable="0" physicalName="nr_ano_trimestre" precision="20" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL10" populated="true" UUID="84c1f590-ffd0-4072-a298-3dd6d3637fa7" autoIncrement="false" name="nr_mes" nullable="0" physicalName="nr_mes" precision="10" referenceCount="1" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL11" populated="true" UUID="a23d55ae-dcd9-43ae-872f-6020b855dd09" autoIncrement="false" name="nm_mes" nullable="0" physicalName="nm_mes" precision="20" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL12" populated="true" UUID="135c7ca0-0849-4ad7-b594-f4009afa3d64" autoIncrement="false" name="ano_mes" nullable="0" physicalName="ano_mes" precision="20" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL13" populated="true" UUID="e23d3007-0e27-471d-b7e1-8bb8d7ca72e4" autoIncrement="false" name="nr_semana" nullable="0" physicalName="nr_semana" precision="10" referenceCount="1" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL14" populated="true" UUID="cb3df786-3384-4fb0-b31f-83da40272811" autoIncrement="false" name="ano_semana" nullable="0" physicalName="ano_semana" precision="20" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL15" populated="true" UUID="23a9f442-3617-414b-a06c-13e8b89939e4" autoIncrement="false" name="nr_dia" nullable="0" physicalName="nr_dia" precision="10" referenceCount="1" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL16" populated="true" UUID="d3819860-0fec-440d-b0cc-236980f3ee5f" autoIncrement="false" name="nr_dia_ano" nullable="0" physicalName="nr_dia_ano" precision="10" referenceCount="1" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL17" populated="true" UUID="ae7add5a-6990-4ebb-9e53-6584ab8958b1" autoIncrement="false" name="nm_dia_semana" nullable="0" physicalName="nm_dia_semana" precision="20" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL18" populated="true" UUID="1992b60d-a089-4256-a214-9b0fb034acf3" autoIncrement="false" name="flag_final_semana" nullable="0" physicalName="flag_final_semana" precision="3" referenceCount="1" scale="0" sourceDataTypeName="bpchar" type="1" >
+        <remarks></remarks>
+       </column>
+       <column id="COL19" populated="true" UUID="085610d2-9be9-4b0d-b4ee-7464fd4adba5" autoIncrement="false" name="flag_feriado" nullable="0" physicalName="flag_feriado" precision="3" referenceCount="1" scale="0" sourceDataTypeName="bpchar" type="1" >
+        <remarks></remarks>
+       </column>
+       <column id="COL20" populated="true" UUID="1cee4598-e632-4b6b-925d-6ece9a1dad9f" autoIncrement="false" name="nm_feriado" nullable="0" physicalName="nm_feriado" precision="60" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL21" populated="true" UUID="20a8dddf-4470-4ee9-826c-b5e4fcd9937f" autoIncrement="false" name="dt_final" nullable="0" physicalName="dt_final" precision="29" referenceCount="1" scale="6" sourceDataTypeName="timestamp" type="93" >
+        <remarks></remarks>
+       </column>
+       <column id="COL22" populated="true" UUID="4adc8dc4-ea8e-4fe9-b67c-1ff2a9251c95" autoIncrement="false" name="dt_carga" nullable="0" physicalName="dt_carga" precision="29" referenceCount="1" scale="6" sourceDataTypeName="timestamp" type="93" >
+        <remarks></remarks>
+       </column>
+       </folder>
+       <folder id="FOLTAB33" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+       </folder>
+       <folder id="FOLTAB32" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+       </folder>
+       <folder id="FOLTAB34" populated="true" name="Indices" physicalName="Indices" type="4">
+       <index id="IDX23" populated="true" UUID="fb0982d2-28e8-4327-a011-d061bc29af31" clustered="false" name="dim_data_pkey" physicalName="dim_data_pkey" primaryKeyIndex="true" unique="true" >
+        <index-column id="IDC24" populated="true" UUID="2673248b-8526-44ee-91a2-c2c5fb4469ad" ascendingOrDescending="UNSPECIFIED" column-ref="COL4" name="sk_data" physicalName="sk_data" />
+       </index>
+      </folder>
+     </table>
+     <table id="TAB25" populated="true" UUID="56bf2da9-492d-4551-8092-de2c601cd98d" name="dim_dispendio" objectType="TABLE" physicalName="dim_dispendio" >
+      <remarks></remarks>
+      <folder id="FOLTAB251" populated="true" name="Columns" physicalName="Columns" type="1">
+       <column id="COL26" populated="true" UUID="34437d82-e1d6-4116-935c-f2bd90619c8d" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_dispendio_sk_dispendio_seq&apos;::regclass)" name="sk_dispendio" nullable="0" physicalName="sk_dispendio" precision="10" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="serial" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL27" populated="true" UUID="76560deb-6e21-40da-8a08-e7a541746814" autoIncrement="false" name="descricao" nullable="0" physicalName="descricao" precision="60" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL28" populated="true" UUID="b17c430b-c2e6-4dbb-acc8-1d1b301cfbab" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="nm_passageiro" nullable="0" physicalName="nm_passageiro" precision="120" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL29" populated="true" UUID="798ef008-144c-4741-8422-3f4e78f8dafa" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="trecho" nullable="0" physicalName="trecho" precision="100" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL30" populated="true" UUID="5aacb3db-890b-4605-81a0-f0a4186fed72" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="especificacao" nullable="0" physicalName="especificacao" precision="20" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       </folder>
+       <folder id="FOLTAB253" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+       </folder>
+       <folder id="FOLTAB252" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+       </folder>
+       <folder id="FOLTAB254" populated="true" name="Indices" physicalName="Indices" type="4">
+       <index id="IDX31" populated="true" UUID="b82e517b-4273-4542-b550-3fb7c1004a99" clustered="false" name="dim_dispendio_pkey" physicalName="dim_dispendio_pkey" primaryKeyIndex="true" unique="true" >
+        <index-column id="IDC32" populated="true" UUID="19c3c498-6bde-466b-89ad-10372ab2696c" ascendingOrDescending="UNSPECIFIED" column-ref="COL26" name="sk_dispendio" physicalName="sk_dispendio" />
+       </index>
+      </folder>
+     </table>
+     <table id="TAB33" populated="true" UUID="29963f63-3822-46dc-8c34-0c78402e591b" name="dim_fornecedor" objectType="TABLE" physicalName="dim_fornecedor" >
+      <remarks></remarks>
+      <folder id="FOLTAB331" populated="true" name="Columns" physicalName="Columns" type="1">
+       <column id="COL34" populated="true" UUID="c930582a-18af-491f-b853-6b0ceeedcdd1" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_fornecedor_sk_fornecedor_seq&apos;::regclass)" name="sk_fornecedor" nullable="0" physicalName="sk_fornecedor" precision="10" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="serial" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL35" populated="true" UUID="10c1495d-77fb-461a-954f-03c45028d7a8" autoIncrement="false" name="natureza" nullable="0" physicalName="natureza" precision="8" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL36" populated="true" UUID="6a719103-5ad5-4414-bfea-9cac23797788" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="nm_fornecedor" nullable="0" physicalName="nm_fornecedor" precision="150" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL37" populated="true" UUID="ae497984-fa96-48ec-b65b-f04465542134" autoIncrement="false" name="cadastro" nullable="0" physicalName="cadastro" precision="24" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       </folder>
+       <folder id="FOLTAB333" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+       </folder>
+       <folder id="FOLTAB332" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+       </folder>
+       <folder id="FOLTAB334" populated="true" name="Indices" physicalName="Indices" type="4">
+       <index id="IDX38" populated="true" UUID="8aa40f34-0360-407b-b6ee-3b90bb33e91c" clustered="false" name="dim_fornecedor_pkey" physicalName="dim_fornecedor_pkey" primaryKeyIndex="true" unique="true" >
+        <index-column id="IDC39" populated="true" UUID="1b834dd4-01f5-49df-92dc-49b8d5a8a006" ascendingOrDescending="UNSPECIFIED" column-ref="COL34" name="sk_fornecedor" physicalName="sk_fornecedor" />
+       </index>
+      </folder>
+     </table>
+     <table id="TAB40" populated="true" UUID="ff47d61b-b676-44c8-866b-2651a3a38f6f" name="dim_local" objectType="TABLE" physicalName="dim_local" >
+      <remarks></remarks>
+      <folder id="FOLTAB401" populated="true" name="Columns" physicalName="Columns" type="1">
+       <column id="COL41" populated="true" UUID="b0f3a483-104b-406d-9d95-fa90513312a5" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_local_sk_local_seq&apos;::regclass)" name="sk_local" nullable="0" physicalName="sk_local" precision="10" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="serial" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL42" populated="true" UUID="f8cc9f8d-4fce-4e67-a82d-dd54e6140946" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="nm_cidade" nullable="0" physicalName="nm_cidade" precision="32" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL43" populated="true" UUID="b9112e30-b55d-4c6f-9cea-12d83440f2c3" autoIncrement="false" defaultValue="&apos;N/A&apos;::bpchar" name="sg_estado" nullable="0" physicalName="sg_estado" precision="3" referenceCount="1" scale="0" sourceDataTypeName="bpchar" type="1" >
+        <remarks></remarks>
+       </column>
+       <column id="COL44" populated="true" UUID="ab0842d0-f073-423b-9b42-be331ac30fca" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="nm_pais" nullable="0" physicalName="nm_pais" precision="40" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       </folder>
+       <folder id="FOLTAB403" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+       </folder>
+       <folder id="FOLTAB402" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+       </folder>
+       <folder id="FOLTAB404" populated="true" name="Indices" physicalName="Indices" type="4">
+       <index id="IDX45" populated="true" UUID="52303d92-7ad0-44ed-b2a4-8f3218fabd00" clustered="false" name="dim_local_pkey" physicalName="dim_local_pkey" primaryKeyIndex="true" unique="true" >
+        <index-column id="IDC46" populated="true" UUID="916fce1d-caaa-42aa-97bf-35dcd886a271" ascendingOrDescending="UNSPECIFIED" column-ref="COL41" name="sk_local" physicalName="sk_local" />
+       </index>
+      </folder>
+     </table>
+     <table id="TAB47" populated="true" UUID="66681ee0-d2ee-4dae-88e5-c499d9a81c77" name="dim_parlamentar" objectType="TABLE" physicalName="dim_parlamentar" >
+      <remarks></remarks>
+      <folder id="FOLTAB471" populated="true" name="Columns" physicalName="Columns" type="1">
+       <column id="COL48" populated="true" UUID="4aea9dc4-d812-426a-a924-59c50208bba5" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_parlamentar_sk_parlamentar_seq&apos;::regclass)" name="sk_parlamentar" nullable="0" physicalName="sk_parlamentar" precision="10" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="serial" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL49" populated="true" UUID="920c0fdf-cd6a-4c56-91b0-99ecf3911edf" autoIncrement="false" name="nm_parlamentar" nullable="0" physicalName="nm_parlamentar" precision="36" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL50" populated="true" UUID="0fee8432-2d4f-4986-a03a-ebf5b5b63729" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="sexo" nullable="0" physicalName="sexo" precision="10" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL51" populated="true" UUID="3e67c114-b9ca-4d59-bd01-cd89a44dbbd5" autoIncrement="false" name="dt_nascimento" nullable="0" physicalName="dt_nascimento" precision="13" referenceCount="1" scale="0" sourceDataTypeName="date" type="91" >
+        <remarks></remarks>
+       </column>
+       <column id="COL52" populated="true" UUID="68aa65d0-0cce-40d9-ab6c-1cf7c2c829a4" autoIncrement="false" defaultValue="&apos;N/A&apos;::bpchar" name="sg_estado_eleitor" nullable="0" physicalName="sg_estado_eleitor" precision="3" referenceCount="1" scale="0" sourceDataTypeName="bpchar" type="1" >
+        <remarks></remarks>
+       </column>
+       <column id="COL53" populated="true" UUID="b927959f-4513-460b-aee1-04715833b5ef" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="escolaridade" nullable="0" physicalName="escolaridade" precision="24" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       <column id="COL54" populated="true" UUID="35f5afd5-0157-4024-9e2d-844703ef5db2" autoIncrement="false" name="nk_parlamentar" nullable="1" physicalName="nk_parlamentar" precision="10" referenceCount="1" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       </folder>
+       <folder id="FOLTAB473" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+       </folder>
+       <folder id="FOLTAB472" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+       </folder>
+       <folder id="FOLTAB474" populated="true" name="Indices" physicalName="Indices" type="4">
+       <index id="IDX55" populated="true" UUID="228b8b84-9079-4e55-8d3d-18d7438d09a8" clustered="false" name="dim_parlamentar_pkey" physicalName="dim_parlamentar_pkey" primaryKeyIndex="true" unique="true" >
+        <index-column id="IDC56" populated="true" UUID="007cae78-62c6-4983-b85e-b0bcfe35aeea" ascendingOrDescending="UNSPECIFIED" column-ref="COL48" name="sk_parlamentar" physicalName="sk_parlamentar" />
+       </index>
+      </folder>
+     </table>
+     <table id="TAB57" populated="true" UUID="b1f562f3-c609-42dd-9a3f-7d8e7960300a" name="dim_partido" objectType="TABLE" physicalName="dim_partido" >
+      <remarks></remarks>
+      <folder id="FOLTAB571" populated="true" name="Columns" physicalName="Columns" type="1">
+       <column id="COL58" populated="true" UUID="581261b7-014e-4255-ad89-7b16ae0691f6" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_partido_sk_partido_seq&apos;::regclass)" name="sk_partido" nullable="0" physicalName="sk_partido" precision="10" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="serial" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL59" populated="true" UUID="d7265d53-293f-4d6a-af38-a505bd389eab" autoIncrement="false" name="nk_partido" nullable="0" physicalName="nk_partido" precision="10" referenceCount="1" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL60" populated="true" UUID="0ce7e791-b342-448e-996e-c6ced8686776" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="sg_partido" nullable="0" physicalName="sg_partido" precision="16" referenceCount="1" scale="0" sourceDataTypeName="varchar" type="12" >
+        <remarks></remarks>
+       </column>
+       </folder>
+       <folder id="FOLTAB573" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+       </folder>
+       <folder id="FOLTAB572" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+       </folder>
+       <folder id="FOLTAB574" populated="true" name="Indices" physicalName="Indices" type="4">
+       <index id="IDX61" populated="true" UUID="4e2c4788-da28-4fd5-a871-0d3f144a3ca6" clustered="false" name="dim_partido_pkey" physicalName="dim_partido_pkey" primaryKeyIndex="true" unique="true" >
+        <index-column id="IDC62" populated="true" UUID="bfe741e6-2fc0-45fe-a891-68739873f9f0" ascendingOrDescending="UNSPECIFIED" column-ref="COL58" name="sk_partido" physicalName="sk_partido" />
+       </index>
+      </folder>
+     </table>
+     <table id="TAB63" populated="true" UUID="5b785371-ed6c-4bc9-9341-3452ca7db96e" name="ft_gastos" objectType="TABLE" physicalName="ft_gastos" >
+      <remarks></remarks>
+      <folder id="FOLTAB631" populated="true" name="Columns" physicalName="Columns" type="1">
+       <column id="COL64" populated="true" UUID="ab489d7e-1523-42ee-beb9-feab4ce3ba00" autoIncrement="true" defaultValue="nextval(&apos;dw.ft_gastos_sk_gastos_seq&apos;::regclass)" name="sk_gastos" nullable="0" physicalName="sk_gastos" precision="10" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="serial" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL65" populated="true" UUID="e5bcdefb-2b8a-4b5c-b473-c6160167867a" autoIncrement="false" name="sk_partido" nullable="0" physicalName="sk_partido" precision="10" referenceCount="2" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL66" populated="true" UUID="5feecc0e-3e23-4502-996e-b5e9cd804915" autoIncrement="false" name="sk_fornecedor" nullable="0" physicalName="sk_fornecedor" precision="10" referenceCount="2" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL67" populated="true" UUID="3e182026-909e-4ba4-9499-32004461b98f" autoIncrement="false" name="sk_dispendio" nullable="0" physicalName="sk_dispendio" precision="10" referenceCount="2" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL68" populated="true" UUID="0ea707b4-b25f-464d-b6b8-c2643e6159c1" autoIncrement="false" name="sk_data" nullable="0" physicalName="sk_data" precision="10" referenceCount="2" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL69" populated="true" UUID="67874ec7-1085-4971-867e-9962a3e34560" autoIncrement="false" name="sk_local" nullable="0" physicalName="sk_local" precision="10" referenceCount="2" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL70" populated="true" UUID="4844174a-1a26-4e9c-bed2-a44c8c90a023" autoIncrement="false" name="vl_glosa" nullable="0" physicalName="vl_glosa" precision="8" referenceCount="1" scale="8" sourceDataTypeName="float4" type="7" >
+        <remarks></remarks>
+       </column>
+       <column id="COL71" populated="true" UUID="1ed9a545-19e1-47ad-bc20-fd90371098a9" autoIncrement="false" name="vl_restituicao" nullable="0" physicalName="vl_restituicao" precision="8" referenceCount="1" scale="8" sourceDataTypeName="float4" type="7" >
+        <remarks></remarks>
+       </column>
+       <column id="COL72" populated="true" UUID="22006dbf-0cd5-4931-8a32-20d93f0d4376" autoIncrement="false" name="vl_documento" nullable="0" physicalName="vl_documento" precision="8" referenceCount="1" scale="8" sourceDataTypeName="float4" type="7" >
+        <remarks></remarks>
+       </column>
+       <column id="COL73" populated="true" UUID="3445394a-cd41-4301-a478-5b54fb9dfcdb" autoIncrement="false" name="vl_liquido" nullable="0" physicalName="vl_liquido" precision="8" referenceCount="1" scale="8" sourceDataTypeName="float4" type="7" >
+        <remarks></remarks>
+       </column>
+       <column id="COL74" populated="true" UUID="6f82e114-f043-4730-94a3-7f14626ccb36" autoIncrement="false" name="legislatura" nullable="0" physicalName="legislatura" precision="10" referenceCount="1" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       <column id="COL75" populated="true" UUID="28f3bd5f-7904-494b-8ae2-15443950722a" autoIncrement="false" name="sk_parlamentar" nullable="0" physicalName="sk_parlamentar" precision="10" referenceCount="2" scale="0" sourceDataTypeName="int4" type="4" >
+        <remarks></remarks>
+       </column>
+       </folder>
+       <folder id="FOLTAB633" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+       </folder>
+       <folder id="FOLTAB632" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+       </folder>
+       <folder id="FOLTAB634" populated="true" name="Indices" physicalName="Indices" type="4">
+       <index id="IDX76" populated="true" UUID="758e3dad-3cbe-4208-8ac7-d7400c0cc741" clustered="false" name="ft_gastos_pkey" physicalName="ft_gastos_pkey" primaryKeyIndex="true" unique="true" >
+        <index-column id="IDC77" populated="true" UUID="baae2bef-8b6b-46ae-90d6-46018b1db736" ascendingOrDescending="UNSPECIFIED" column-ref="COL64" name="sk_gastos" physicalName="sk_gastos" />
+       </index>
+      </folder>
+     </table>
+    </schema>
+    <schema id="SCH78" populated="false" UUID="e078c5b3-ed26-4e20-b71b-d35b499d38aa" name="information_schema" nativeTerm="schema" physicalName="information_schema" >
+    </schema>
+    <schema id="SCH79" populated="false" UUID="bb5479e9-4075-4e3c-9f3e-3f06cb52d97d" name="pg_catalog" nativeTerm="schema" physicalName="pg_catalog" >
+    </schema>
+    <schema id="SCH80" populated="false" UUID="14172196-2b4d-44f3-9656-23428761e277" name="public" nativeTerm="schema" physicalName="public" >
+    </schema>
+   </catalog>
+   <relationships>
+    <relationship id="REL81" populated="true" UUID="a667470a-a083-4b28-b24d-47f5a5a665a8" deferrability="7" deleteRule="3" fk-table-ref="TAB63" fkCardinality="7" identifying="false" name="dim_data_ft_gastos_fk" physicalName="dim_data_ft_gastos_fk" pk-table-ref="TAB3" pkCardinality="2" updateRule="3" >
+     <column-mapping id="CMP82" populated="true" UUID="630e5a3c-6ad4-43ed-ae9d-aa9a0283242b" fk-column-ref="COL68" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL4" />
+    </relationship>
+    <relationship id="REL83" populated="true" UUID="8884a42a-bb01-4634-8ded-2d57ae4da8aa" deferrability="7" deleteRule="3" fk-table-ref="TAB63" fkCardinality="7" identifying="false" name="dim_dispendio_ft_gastos_fk" physicalName="dim_dispendio_ft_gastos_fk" pk-table-ref="TAB25" pkCardinality="2" updateRule="3" >
+     <column-mapping id="CMP84" populated="true" UUID="c3285325-825f-4299-95bb-ba543dc3af09" fk-column-ref="COL67" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL26" />
+    </relationship>
+    <relationship id="REL85" populated="true" UUID="ae468dfc-f099-4f7e-bf48-f728b11b230f" deferrability="7" deleteRule="3" fk-table-ref="TAB63" fkCardinality="7" identifying="false" name="dim_fornecedor_ft_gastos_fk" physicalName="dim_fornecedor_ft_gastos_fk" pk-table-ref="TAB33" pkCardinality="2" updateRule="3" >
+     <column-mapping id="CMP86" populated="true" UUID="ed672c63-dbf0-4bc7-bcd5-8e4b61b03dae" fk-column-ref="COL66" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL34" />
+    </relationship>
+    <relationship id="REL87" populated="true" UUID="d688a5f1-c556-4444-9ca1-b3555f90da25" deferrability="7" deleteRule="3" fk-table-ref="TAB63" fkCardinality="7" identifying="false" name="dim_local_ft_gastos_fk" physicalName="dim_local_ft_gastos_fk" pk-table-ref="TAB40" pkCardinality="2" updateRule="3" >
+     <column-mapping id="CMP88" populated="true" UUID="a13a2c69-7089-4c29-9231-addc1a1bb8b6" fk-column-ref="COL69" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL41" />
+    </relationship>
+    <relationship id="REL89" populated="true" UUID="7555dc11-ec01-4b79-83f9-16e813b05dcc" deferrability="7" deleteRule="3" fk-table-ref="TAB63" fkCardinality="7" identifying="false" name="dim_parlamentar_ft_gastos_fk" physicalName="dim_parlamentar_ft_gastos_fk" pk-table-ref="TAB47" pkCardinality="2" updateRule="3" >
+     <column-mapping id="CMP90" populated="true" UUID="be0a49fc-f63c-4d4e-a9ca-bb52387fbfde" fk-column-ref="COL75" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL48" />
+    </relationship>
+    <relationship id="REL91" populated="true" UUID="7732dfea-8e1c-46d9-abad-dcbe169b654f" deferrability="7" deleteRule="3" fk-table-ref="TAB63" fkCardinality="7" identifying="false" name="dim_partido_ft_gastos_fk" physicalName="dim_partido_ft_gastos_fk" pk-table-ref="TAB57" pkCardinality="2" updateRule="3" >
+     <column-mapping id="CMP92" populated="true" UUID="1f372dfd-8ed7-4a2d-819b-3ff00b031d90" fk-column-ref="COL65" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL58" />
+    </relationship>
+   </relationships>
+  </database>
+ </source-databases>
+ <target-database id="ppdb" dbcs-ref="DS0">
+  <table id="TAB94" populated="true" UUID="676fd999-6758-4539-905f-dc1dadda8513" name="dim_data" objectType="TABLE" physicalName="dim_data" >
+   <remarks></remarks>
+   <folder id="FOLTAB941" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL95" populated="true" UUID="6ff64092-6801-4c79-b346-b33dc419eed1" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_data_sk_data_seq&apos;::regclass)" name="sk_data" nullable="0" physicalName="sk_data" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" source-column-ref="COL4" sourceDataTypeName="serial" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL96" populated="true" UUID="1e5a19fe-dcf0-4f0d-aee2-82549b469845" autoIncrement="false" defaultValue="" name="nk_data" nullable="0" physicalName="nk_data" precision="0" referenceCount="1" scale="0" source-column-ref="COL5" sourceDataTypeName="date" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+     <remarks></remarks>
+    </column>
+    <column id="COL97" populated="true" UUID="bfaf5299-ce14-4c1a-ae87-6b70a6ae7f0e" autoIncrement="false" defaultValue="" name="desc_data_completa" nullable="0" physicalName="desc_data_completa" precision="60" referenceCount="1" scale="0" source-column-ref="COL6" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL98" populated="true" UUID="f8823464-2f23-4f7c-be3e-1f0818444901" autoIncrement="false" defaultValue="" name="nr_ano" nullable="0" physicalName="nr_ano" precision="0" referenceCount="1" scale="0" source-column-ref="COL7" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL99" populated="true" UUID="ff877ac0-c35e-4ab8-bb85-4a396490bce6" autoIncrement="false" defaultValue="" name="nm_trimestre" nullable="0" physicalName="nm_trimestre" precision="20" referenceCount="1" scale="0" source-column-ref="COL8" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL100" populated="true" UUID="fdeeb77c-df00-4d0e-b1da-31ea117ae06a" autoIncrement="false" defaultValue="" name="nr_ano_trimestre" nullable="0" physicalName="nr_ano_trimestre" precision="20" referenceCount="1" scale="0" source-column-ref="COL9" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL101" populated="true" UUID="7cb3f402-9ff2-4fce-bd51-fdb0f6b7b7b3" autoIncrement="false" defaultValue="" name="nr_mes" nullable="0" physicalName="nr_mes" precision="0" referenceCount="1" scale="0" source-column-ref="COL10" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL102" populated="true" UUID="a3b31827-9452-455e-b3cd-66bf30e41f54" autoIncrement="false" defaultValue="" name="nm_mes" nullable="0" physicalName="nm_mes" precision="20" referenceCount="1" scale="0" source-column-ref="COL11" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL103" populated="true" UUID="b07990e5-530d-4b29-afb9-d7054b2f2da1" autoIncrement="false" defaultValue="" name="ano_mes" nullable="0" physicalName="ano_mes" precision="20" referenceCount="1" scale="0" source-column-ref="COL12" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL104" populated="true" UUID="4bfadd07-3e7c-415b-b03e-76514a9fe5c1" autoIncrement="false" defaultValue="" name="nr_semana" nullable="0" physicalName="nr_semana" precision="0" referenceCount="1" scale="0" source-column-ref="COL13" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL105" populated="true" UUID="f9cf186b-1b97-4584-a34a-f1d755bb42df" autoIncrement="false" defaultValue="" name="ano_semana" nullable="0" physicalName="ano_semana" precision="20" referenceCount="1" scale="0" source-column-ref="COL14" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL106" populated="true" UUID="62674ba1-49f6-4f6e-b10c-cd58855fe123" autoIncrement="false" defaultValue="" name="nr_dia" nullable="0" physicalName="nr_dia" precision="0" referenceCount="1" scale="0" source-column-ref="COL15" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL107" populated="true" UUID="34609cd2-cc16-414b-b4af-daab5144c086" autoIncrement="false" defaultValue="" name="nr_dia_ano" nullable="0" physicalName="nr_dia_ano" precision="0" referenceCount="1" scale="0" source-column-ref="COL16" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL108" populated="true" UUID="41d3b6ee-7607-4bd5-9147-8be97432c25e" autoIncrement="false" defaultValue="" name="nm_dia_semana" nullable="0" physicalName="nm_dia_semana" precision="20" referenceCount="1" scale="0" source-column-ref="COL17" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL109" populated="true" UUID="9a63f8e6-396d-4815-b497-fd4b1ebb26e9" autoIncrement="false" defaultValue="" name="flag_final_semana" nullable="0" physicalName="flag_final_semana" precision="3" referenceCount="1" scale="0" source-column-ref="COL18" sourceDataTypeName="bpchar" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks></remarks>
+    </column>
+    <column id="COL110" populated="true" UUID="d7ac9fe7-277e-4225-b3b6-6a984a8a6627" autoIncrement="false" defaultValue="" name="flag_feriado" nullable="0" physicalName="flag_feriado" precision="3" referenceCount="1" scale="0" source-column-ref="COL19" sourceDataTypeName="bpchar" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks></remarks>
+    </column>
+    <column id="COL111" populated="true" UUID="02e9d9a2-ba25-400c-8732-adc8365a6270" autoIncrement="false" defaultValue="" name="nm_feriado" nullable="0" physicalName="nm_feriado" precision="60" referenceCount="1" scale="0" source-column-ref="COL20" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL112" populated="true" UUID="283bbffe-a86b-4046-817d-676eaccddd74" autoIncrement="false" defaultValue="" name="dt_final" nullable="0" physicalName="dt_final" precision="0" referenceCount="1" scale="0" source-column-ref="COL21" sourceDataTypeName="timestamp" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
+     <remarks></remarks>
+    </column>
+    <column id="COL113" populated="true" UUID="1024538a-a1b8-451b-9829-1911b7be65fa" autoIncrement="false" defaultValue="" name="dt_carga" nullable="0" physicalName="dt_carga" precision="0" referenceCount="1" scale="0" source-column-ref="COL22" sourceDataTypeName="timestamp" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB943" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB942" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB944" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX114" populated="true" UUID="6f215687-23f2-4631-88b8-a3454e060968" clustered="false" name="dim_data_pkey" physicalName="dim_data_pkey" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC115" populated="true" UUID="4a09c0d8-fb6c-4e85-9ef8-f4aeea8ac9fb" ascendingOrDescending="UNSPECIFIED" column-ref="COL95" name="sk_data" physicalName="sk_data" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB116" populated="true" UUID="91ef06e2-74f7-4d1d-9fb6-418bf5e5d314" name="dim_dispendio" objectType="TABLE" physicalName="dim_dispendio" >
+   <remarks></remarks>
+   <folder id="FOLTAB1161" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL117" populated="true" UUID="f663909d-8fea-4d54-8867-4790d22ab23f" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_dispendio_sk_dispendio_seq&apos;::regclass)" name="sk_dispendio" nullable="0" physicalName="sk_dispendio" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" source-column-ref="COL26" sourceDataTypeName="serial" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL118" populated="true" UUID="b2c836fe-1ccc-479a-922e-b748e193759b" autoIncrement="false" defaultValue="" name="descricao" nullable="0" physicalName="descricao" precision="60" referenceCount="1" scale="0" source-column-ref="COL27" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL119" populated="true" UUID="550c61a9-b949-4c1a-98f8-97050d928962" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="nm_passageiro" nullable="0" physicalName="nm_passageiro" precision="120" referenceCount="1" scale="0" source-column-ref="COL28" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL120" populated="true" UUID="b5dc3070-da2f-48c9-9cbd-5a01c79b83a2" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="trecho" nullable="0" physicalName="trecho" precision="100" referenceCount="1" scale="0" source-column-ref="COL29" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL121" populated="true" UUID="3ac2b311-dc64-4979-837f-cc7c467d71e0" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="especificacao" nullable="0" physicalName="especificacao" precision="20" referenceCount="1" scale="0" source-column-ref="COL30" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1163" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1162" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1164" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX122" populated="true" UUID="e3ad00a9-3fe9-4f55-9c87-33a1c3bf8d06" clustered="false" name="dim_dispendio_pkey" physicalName="dim_dispendio_pkey" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC123" populated="true" UUID="1ec2ba16-c2fd-4a47-9ceb-5dbf776bec92" ascendingOrDescending="UNSPECIFIED" column-ref="COL117" name="sk_dispendio" physicalName="sk_dispendio" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB124" populated="true" UUID="c0271f89-ced6-4cf1-bdbf-299d8b4f8e76" name="dim_fornecedor" objectType="TABLE" physicalName="dim_fornecedor" >
+   <remarks></remarks>
+   <folder id="FOLTAB1241" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL125" populated="true" UUID="452abe06-3709-41a3-9443-6292745526c1" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_fornecedor_sk_fornecedor_seq&apos;::regclass)" name="sk_fornecedor" nullable="0" physicalName="sk_fornecedor" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" source-column-ref="COL34" sourceDataTypeName="serial" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL126" populated="true" UUID="89b58956-30d2-4c8b-a9f7-fb74ed524fbc" autoIncrement="false" defaultValue="" name="natureza" nullable="0" physicalName="natureza" precision="8" referenceCount="1" scale="0" source-column-ref="COL35" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL127" populated="true" UUID="7c08c358-c314-4898-afda-106e18683b51" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="nm_fornecedor" nullable="0" physicalName="nm_fornecedor" precision="150" referenceCount="1" scale="0" source-column-ref="COL36" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL128" populated="true" UUID="028e940d-d132-4a7d-8e71-56c5c7d2daf6" autoIncrement="false" defaultValue="" name="cadastro" nullable="0" physicalName="cadastro" precision="24" referenceCount="1" scale="0" source-column-ref="COL37" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1243" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1242" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1244" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX129" populated="true" UUID="a8331d13-c0bd-48c9-b22f-51edec5a4c56" clustered="false" name="dim_fornecedor_pkey" physicalName="dim_fornecedor_pkey" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC130" populated="true" UUID="325fa8eb-d7c1-44bf-b064-4509b555f8de" ascendingOrDescending="UNSPECIFIED" column-ref="COL125" name="sk_fornecedor" physicalName="sk_fornecedor" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB131" populated="true" UUID="f971a35d-f793-4a04-9825-08196fb5bd02" name="dim_local" objectType="TABLE" physicalName="dim_local" >
+   <remarks></remarks>
+   <folder id="FOLTAB1311" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL132" populated="true" UUID="0f65f2ab-64e8-40d7-b9e7-31400b5dca53" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_local_sk_local_seq&apos;::regclass)" name="sk_local" nullable="0" physicalName="sk_local" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" source-column-ref="COL41" sourceDataTypeName="serial" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL133" populated="true" UUID="ff625ebd-cefa-42e4-95a5-29928a9843bc" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="nm_cidade" nullable="0" physicalName="nm_cidade" precision="32" referenceCount="1" scale="0" source-column-ref="COL42" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL134" populated="true" UUID="5184896b-9263-4581-b12b-ea9f0a634bee" autoIncrement="false" defaultValue="&apos;N/A&apos;::bpchar" name="sg_estado" nullable="0" physicalName="sg_estado" precision="3" referenceCount="1" scale="0" source-column-ref="COL43" sourceDataTypeName="bpchar" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks></remarks>
+    </column>
+    <column id="COL135" populated="true" UUID="0962a381-9a3e-4021-a7fe-81e5a79a93d9" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="nm_pais" nullable="0" physicalName="nm_pais" precision="40" referenceCount="1" scale="0" source-column-ref="COL44" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1313" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1312" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1314" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX136" populated="true" UUID="d30fd62c-d5d7-4d6d-9ae8-a95da7152793" clustered="false" name="dim_local_pkey" physicalName="dim_local_pkey" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC137" populated="true" UUID="7bdfc7ea-7220-444b-814d-cd67e8268796" ascendingOrDescending="UNSPECIFIED" column-ref="COL132" name="sk_local" physicalName="sk_local" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB138" populated="true" UUID="4963e11d-e4b2-4ff6-8110-fe35a276255b" name="dim_parlamentar" objectType="TABLE" physicalName="dim_parlamentar" >
+   <remarks></remarks>
+   <folder id="FOLTAB1381" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL139" populated="true" UUID="36783589-f10e-4fc6-9c44-835ed8a27aef" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_parlamentar_sk_parlamentar_seq&apos;::regclass)" name="sk_parlamentar" nullable="0" physicalName="sk_parlamentar" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" source-column-ref="COL48" sourceDataTypeName="serial" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL140" populated="true" UUID="536ec885-77b1-4f08-a2b5-caa1fdff8445" autoIncrement="false" defaultValue="" name="nm_parlamentar" nullable="0" physicalName="nm_parlamentar" precision="36" referenceCount="1" scale="0" source-column-ref="COL49" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL141" populated="true" UUID="514c0b6c-280e-4dda-b2bd-73b4a4a3a05a" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="sexo" nullable="0" physicalName="sexo" precision="10" referenceCount="1" scale="0" source-column-ref="COL50" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL142" populated="true" UUID="b6f3a14b-328b-49a8-9dc9-987d9d909b35" autoIncrement="false" defaultValue="" name="dt_nascimento" nullable="0" physicalName="dt_nascimento" precision="0" referenceCount="1" scale="0" source-column-ref="COL51" sourceDataTypeName="date" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
+     <remarks></remarks>
+    </column>
+    <column id="COL143" populated="true" UUID="a162da0f-3b6f-4076-8218-22e486481883" autoIncrement="false" defaultValue="&apos;N/A&apos;::bpchar" name="sg_estado_eleitor" nullable="0" physicalName="sg_estado_eleitor" precision="3" referenceCount="1" scale="0" source-column-ref="COL52" sourceDataTypeName="bpchar" type="1" userDefinedTypeUUID="67ddc63f-5541-4dd1-9236-632d9d155e80" >
+     <remarks></remarks>
+    </column>
+    <column id="COL144" populated="true" UUID="c45fa142-daa0-4268-94d2-4a1d481e86a3" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="escolaridade" nullable="0" physicalName="escolaridade" precision="24" referenceCount="1" scale="0" source-column-ref="COL53" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    <column id="COL145" populated="true" UUID="3d17b6f2-f9ba-4394-bd32-dc7ff3b959d7" autoIncrement="false" defaultValue="" name="nk_parlamentar" nullable="1" physicalName="nk_parlamentar" precision="0" referenceCount="1" scale="0" source-column-ref="COL54" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1383" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1382" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1384" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX146" populated="true" UUID="8c662596-c194-45be-9986-1fcd4a5e3e78" clustered="false" name="dim_parlamentar_pkey" physicalName="dim_parlamentar_pkey" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC147" populated="true" UUID="564feb30-086d-4072-9afa-8cde6ca69af0" ascendingOrDescending="UNSPECIFIED" column-ref="COL139" name="sk_parlamentar" physicalName="sk_parlamentar" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB148" populated="true" UUID="02435335-2713-4f5c-8cec-5d30120bcce0" name="dim_partido" objectType="TABLE" physicalName="dim_partido" >
+   <remarks></remarks>
+   <folder id="FOLTAB1481" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL149" populated="true" UUID="2f35ba73-733b-4286-a1f9-2269dc68822c" autoIncrement="true" defaultValue="nextval(&apos;dw.dim_partido_sk_partido_seq&apos;::regclass)" name="sk_partido" nullable="0" physicalName="sk_partido" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" source-column-ref="COL58" sourceDataTypeName="serial" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL150" populated="true" UUID="5d699f72-77ec-4cf5-8046-1728a9312ba4" autoIncrement="false" defaultValue="" name="nk_partido" nullable="0" physicalName="nk_partido" precision="0" referenceCount="1" scale="0" source-column-ref="COL59" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL151" populated="true" UUID="780f5eac-913f-4de3-82f1-9890470b4850" autoIncrement="false" defaultValue="&apos;N/A&apos;::character varying" name="sg_partido" nullable="0" physicalName="sg_partido" precision="16" referenceCount="1" scale="0" source-column-ref="COL60" sourceDataTypeName="varchar" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1483" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1482" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1484" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX152" populated="true" UUID="e5e24cbf-2d33-45c7-a107-5d0401151722" clustered="false" name="dim_partido_pkey" physicalName="dim_partido_pkey" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC153" populated="true" UUID="9dd939bc-269a-4045-9f28-3abe8f9eeedb" ascendingOrDescending="UNSPECIFIED" column-ref="COL149" name="sk_partido" physicalName="sk_partido" />
+    </index>
+   </folder>
+  </table>
+  <table id="TAB154" populated="true" UUID="8e07848f-78f5-417a-9402-f6a8d541bb29" name="ft_gastos" objectType="TABLE" physicalName="ft_gastos" >
+   <remarks></remarks>
+   <folder id="FOLTAB1541" populated="true" name="Columns" physicalName="Columns" type="1">
+    <column id="COL155" populated="true" UUID="835c384d-0dca-4d04-b0ce-a72faf4159a8" autoIncrement="true" defaultValue="nextval(&apos;dw.ft_gastos_sk_gastos_seq&apos;::regclass)" name="sk_gastos" nullable="0" physicalName="sk_gastos" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" source-column-ref="COL64" sourceDataTypeName="serial" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL156" populated="true" UUID="5ac4f957-cfcc-4d5d-ad82-c34b01231267" autoIncrement="false" defaultValue="" name="sk_partido" nullable="0" physicalName="sk_partido" precision="0" referenceCount="2" scale="0" source-column-ref="COL65" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL157" populated="true" UUID="7e870490-ba6a-4c67-b26b-a094555a7c31" autoIncrement="false" defaultValue="" name="sk_fornecedor" nullable="0" physicalName="sk_fornecedor" precision="0" referenceCount="2" scale="0" source-column-ref="COL66" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL158" populated="true" UUID="0afb17b2-1d6c-4992-92f4-c1c9fbcc61dd" autoIncrement="false" defaultValue="" name="sk_dispendio" nullable="0" physicalName="sk_dispendio" precision="0" referenceCount="2" scale="0" source-column-ref="COL67" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL159" populated="true" UUID="1eeae58f-1fe7-4a3f-bc2c-b291de4d5fa6" autoIncrement="false" defaultValue="" name="sk_data" nullable="0" physicalName="sk_data" precision="0" referenceCount="2" scale="0" source-column-ref="COL68" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL160" populated="true" UUID="61bc64d0-8ce0-4234-a186-cc32c9e7b0e1" autoIncrement="false" defaultValue="" name="sk_local" nullable="0" physicalName="sk_local" precision="0" referenceCount="2" scale="0" source-column-ref="COL69" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL161" populated="true" UUID="078785fe-1885-4795-8d43-78be69c1376a" autoIncrement="false" defaultValue="" name="vl_glosa" nullable="0" physicalName="vl_glosa" precision="0" referenceCount="1" scale="0" source-column-ref="COL70" sourceDataTypeName="float4" type="7" userDefinedTypeUUID="8fe516a5-9833-4170-9572-50e78bbf221f" >
+     <remarks></remarks>
+    </column>
+    <column id="COL162" populated="true" UUID="277b1090-9a1a-4441-a455-1b88191d91aa" autoIncrement="false" defaultValue="" name="vl_restituicao" nullable="0" physicalName="vl_restituicao" precision="0" referenceCount="1" scale="0" source-column-ref="COL71" sourceDataTypeName="float4" type="7" userDefinedTypeUUID="8fe516a5-9833-4170-9572-50e78bbf221f" >
+     <remarks></remarks>
+    </column>
+    <column id="COL163" populated="true" UUID="5c4b243f-3971-4a8f-a519-b5d756feb98d" autoIncrement="false" defaultValue="" name="vl_documento" nullable="0" physicalName="vl_documento" precision="0" referenceCount="1" scale="0" source-column-ref="COL72" sourceDataTypeName="float4" type="7" userDefinedTypeUUID="8fe516a5-9833-4170-9572-50e78bbf221f" >
+     <remarks></remarks>
+    </column>
+    <column id="COL164" populated="true" UUID="7ea2ae5e-06fb-4458-aa5a-60bf0f0a4a93" autoIncrement="false" defaultValue="" name="vl_liquido" nullable="0" physicalName="vl_liquido" precision="0" referenceCount="1" scale="0" source-column-ref="COL73" sourceDataTypeName="float4" type="7" userDefinedTypeUUID="8fe516a5-9833-4170-9572-50e78bbf221f" >
+     <remarks></remarks>
+    </column>
+    <column id="COL165" populated="true" UUID="c37e475f-0a2f-44a4-b340-cd017add8170" autoIncrement="false" defaultValue="" name="legislatura" nullable="0" physicalName="legislatura" precision="0" referenceCount="1" scale="0" source-column-ref="COL74" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL166" populated="true" UUID="c9be5cf2-8b55-450f-a648-05b82927770a" autoIncrement="false" defaultValue="" name="sk_parlamentar" nullable="0" physicalName="sk_parlamentar" precision="0" referenceCount="2" scale="0" source-column-ref="COL75" sourceDataTypeName="int4" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    </folder>
+    <folder id="FOLTAB1543" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
+    </folder>
+    <folder id="FOLTAB1542" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
+    </folder>
+    <folder id="FOLTAB1544" populated="true" name="Indices" physicalName="Indices" type="4">
+    <index id="IDX167" populated="true" UUID="9ba67d90-83bf-4d67-9ce4-f23be7e46148" clustered="false" name="ft_gastos_pkey" physicalName="ft_gastos_pkey" primaryKeyIndex="true" unique="true" >
+     <index-column id="IDC168" populated="true" UUID="3f0e077e-b197-4a55-a48e-f631d40742a5" ascendingOrDescending="UNSPECIFIED" column-ref="COL155" name="sk_gastos" physicalName="sk_gastos" />
+    </index>
+   </folder>
+  </table>
+  <relationships>
+   <relationship id="REL169" populated="true" UUID="eccbc79d-8d31-49de-8a7c-9fab311a4656" deferrability="7" deleteRule="3" fk-table-ref="TAB154" fkCardinality="7" identifying="false" name="dim_data_ft_gastos_fk" physicalName="dim_data_ft_gastos_fk" pk-table-ref="TAB94" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP170" populated="true" UUID="e320ac54-ce5f-4c65-9cad-01fd6466ad29" fk-column-ref="COL159" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL95" />
+   </relationship>
+   <relationship id="REL171" populated="true" UUID="2c9260d3-9d2d-49a9-8316-360866fcd59c" deferrability="7" deleteRule="3" fk-table-ref="TAB154" fkCardinality="7" identifying="false" name="dim_dispendio_ft_gastos_fk" physicalName="dim_dispendio_ft_gastos_fk" pk-table-ref="TAB116" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP172" populated="true" UUID="dc5f6838-7399-4c9b-8e31-e584da552983" fk-column-ref="COL158" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL117" />
+   </relationship>
+   <relationship id="REL173" populated="true" UUID="4038769d-fb9c-4473-8f83-e6609afb9bb6" deferrability="7" deleteRule="3" fk-table-ref="TAB154" fkCardinality="7" identifying="false" name="dim_fornecedor_ft_gastos_fk" physicalName="dim_fornecedor_ft_gastos_fk" pk-table-ref="TAB124" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP174" populated="true" UUID="c1d24986-e326-445b-92e5-3a3a540e9568" fk-column-ref="COL157" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL125" />
+   </relationship>
+   <relationship id="REL175" populated="true" UUID="106822ae-039f-4b0c-aaae-bbcd0c7db0ca" deferrability="7" deleteRule="3" fk-table-ref="TAB154" fkCardinality="7" identifying="false" name="dim_local_ft_gastos_fk" physicalName="dim_local_ft_gastos_fk" pk-table-ref="TAB131" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP176" populated="true" UUID="72067783-304f-44cb-94d2-6ccc73cb6749" fk-column-ref="COL160" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL132" />
+   </relationship>
+   <relationship id="REL177" populated="true" UUID="05e1503b-95da-46d6-9b1e-07f767864394" deferrability="7" deleteRule="3" fk-table-ref="TAB154" fkCardinality="7" identifying="false" name="dim_parlamentar_ft_gastos_fk" physicalName="dim_parlamentar_ft_gastos_fk" pk-table-ref="TAB138" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP178" populated="true" UUID="91666647-351a-414e-84d4-f78327a11dc9" fk-column-ref="COL166" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL139" />
+   </relationship>
+   <relationship id="REL179" populated="true" UUID="cf948b84-ad39-4bf7-80b6-97cb17a6e997" deferrability="7" deleteRule="3" fk-table-ref="TAB154" fkCardinality="7" identifying="false" name="dim_partido_ft_gastos_fk" physicalName="dim_partido_ft_gastos_fk" pk-table-ref="TAB148" pkCardinality="2" updateRule="3" >
+    <column-mapping id="CMP180" populated="true" UUID="8237bf0d-5d34-472e-96aa-58ae01310654" fk-column-ref="COL156" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL149" />
+   </relationship>
+  </relationships>
+ </target-database>
+ <ddl-generator type="ca.sqlpower.architect.ddl.GenericDDLGenerator" allow-connection="true"> </ddl-generator>
+ <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
+ <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
+ <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+  <table-pane table-ref="TAB94" x="27" y="100" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB116" x="468" y="20" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB124" x="861" y="274" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB131" x="259" y="593" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB138" x="901" y="510" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB148" x="544" y="619" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB154" x="432" y="205" bgColor="0xf0f0f0" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-link relationship-ref="REL169" pkConnection="0.5943661971830986" fkConnection="0.3771186440677966" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL171" pkConnection="0.5836734693877551" fkConnection="0.2981651376146789" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL173" pkConnection="0.88" fkConnection="0.3516949152542373" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="18"/>
+  <table-link relationship-ref="REL175" pkConnection="0.26291079812206575" fkConnection="0.145748987854251" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL177" pkConnection="0.3225806451612903" fkConnection="0.7887931034482759" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+  <table-link relationship-ref="REL179" pkConnection="0.6192660550458715" fkConnection="0.5060728744939271" rLineColor="0x333333" pkLabelText="" fkLabelText="" orientation="72"/>
+ </play-pen>
+ <critic-manager>
+  <critic-grouping platformType="Generic" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PrimaryKeyCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.RelationshipMappingTypeCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.EmptyRelationshipCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.AlphaNumericSequenceNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetDefaultOnColumnWithNoDefaultCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SetNullOnNonNullableColumnCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DuplicateNameCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="DB2" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.DB2UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="H2" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.H2UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="HSQLDB" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.HSQLDBUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="MySQL" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLCommentCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLReservedWordsCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.MySQLUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="Oracle" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OraclePhysicalNameCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleReservedWordsCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.OracleUnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="PostgreSQL" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.PostgreSQLReservedWordsCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerUnsupportedFeaturesCritic" severity="ERROR"/>
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServerReservedWordsCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server 2000" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2000UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+  <critic-grouping platformType="SQL Server 2005" enabled="true">
+   <critic-settings class="ca.sqlpower.architect.ddl.critic.impl.SQLServer2005UnsupportedFeaturesCritic" severity="ERROR"/>
+  </critic-grouping>
+ </critic-manager>
+ <profiles topNCount="10">
+  <table-profile-result ref-id="TAB25" createStartTime="1613514750559" createEndTime="1613514750580" exception="true" exception-type="java.lang.Exception" exception-message="java.lang.RuntimeException: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_dispendio&quot; does not exist
+  Position: 36
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:225)
+	at ca.sqlpower.architect.profile.AbstractTableProfileCreator.doProfile(AbstractTableProfileCreator.java:54)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:246)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:188)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_dispendio&quot; does not exist
+  Position: 36
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:473)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:393)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:322)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:308)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:284)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:236)
+	at ca.sqlpower.sql.jdbcwrapper.StatementDecorator.executeQuery(StatementDecorator.java:117)
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doTableProfile(RemoteDatabaseProfileCreator.java:265)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:210)
+	... 7 more
+" rowCount="0" UUID="b372d040-a06e-4f51-b802-75e96973e3eb">
+  </table-profile-result>
+  <table-profile-result ref-id="TAB47" createStartTime="1613514750587" createEndTime="1613514750603" exception="true" exception-type="java.lang.Exception" exception-message="java.lang.RuntimeException: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_parlamentar&quot; does not exist
+  Position: 36
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:225)
+	at ca.sqlpower.architect.profile.AbstractTableProfileCreator.doProfile(AbstractTableProfileCreator.java:54)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:246)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:188)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_parlamentar&quot; does not exist
+  Position: 36
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:473)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:393)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:322)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:308)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:284)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:236)
+	at ca.sqlpower.sql.jdbcwrapper.StatementDecorator.executeQuery(StatementDecorator.java:117)
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doTableProfile(RemoteDatabaseProfileCreator.java:265)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:210)
+	... 7 more
+" rowCount="0" UUID="f42e9e07-b07e-49be-87d3-a4bcfe88b38f">
+  </table-profile-result>
+  <table-profile-result ref-id="TAB3" createStartTime="1613514750606" createEndTime="1613514750616" exception="true" exception-type="java.lang.Exception" exception-message="java.lang.RuntimeException: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_data&quot; does not exist
+  Position: 36
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:225)
+	at ca.sqlpower.architect.profile.AbstractTableProfileCreator.doProfile(AbstractTableProfileCreator.java:54)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:246)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:188)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_data&quot; does not exist
+  Position: 36
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:473)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:393)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:322)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:308)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:284)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:236)
+	at ca.sqlpower.sql.jdbcwrapper.StatementDecorator.executeQuery(StatementDecorator.java:117)
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doTableProfile(RemoteDatabaseProfileCreator.java:265)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:210)
+	... 7 more
+" rowCount="0" UUID="7682fb59-bb20-46c2-8117-fb2266817a59">
+  </table-profile-result>
+  <table-profile-result ref-id="TAB40" createStartTime="1613514750616" createEndTime="1613514750625" exception="true" exception-type="java.lang.Exception" exception-message="java.lang.RuntimeException: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_local&quot; does not exist
+  Position: 36
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:225)
+	at ca.sqlpower.architect.profile.AbstractTableProfileCreator.doProfile(AbstractTableProfileCreator.java:54)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:246)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:188)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_local&quot; does not exist
+  Position: 36
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:473)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:393)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:322)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:308)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:284)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:236)
+	at ca.sqlpower.sql.jdbcwrapper.StatementDecorator.executeQuery(StatementDecorator.java:117)
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doTableProfile(RemoteDatabaseProfileCreator.java:265)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:210)
+	... 7 more
+" rowCount="0" UUID="bd08c865-aa10-43dd-9e41-be2f5b234f16">
+  </table-profile-result>
+  <table-profile-result ref-id="TAB57" createStartTime="1613514750626" createEndTime="1613514750635" exception="true" exception-type="java.lang.Exception" exception-message="java.lang.RuntimeException: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_partido&quot; does not exist
+  Position: 36
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:225)
+	at ca.sqlpower.architect.profile.AbstractTableProfileCreator.doProfile(AbstractTableProfileCreator.java:54)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:246)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:188)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_partido&quot; does not exist
+  Position: 36
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:473)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:393)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:322)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:308)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:284)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:236)
+	at ca.sqlpower.sql.jdbcwrapper.StatementDecorator.executeQuery(StatementDecorator.java:117)
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doTableProfile(RemoteDatabaseProfileCreator.java:265)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:210)
+	... 7 more
+" rowCount="0" UUID="0eaca6e5-b096-4250-a55d-dc3de96ae06f">
+  </table-profile-result>
+  <table-profile-result ref-id="TAB63" createStartTime="1613514750637" createEndTime="1613514750643" exception="true" exception-type="java.lang.Exception" exception-message="java.lang.RuntimeException: org.postgresql.util.PSQLException: ERROR: relation &quot;ft_gastos&quot; does not exist
+  Position: 36
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:225)
+	at ca.sqlpower.architect.profile.AbstractTableProfileCreator.doProfile(AbstractTableProfileCreator.java:54)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:246)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:188)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;ft_gastos&quot; does not exist
+  Position: 36
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:473)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:393)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:322)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:308)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:284)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:236)
+	at ca.sqlpower.sql.jdbcwrapper.StatementDecorator.executeQuery(StatementDecorator.java:117)
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doTableProfile(RemoteDatabaseProfileCreator.java:265)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:210)
+	... 7 more
+" rowCount="0" UUID="496e2942-ae70-495c-8d60-83a6a6ad91b1">
+  </table-profile-result>
+  <table-profile-result ref-id="TAB33" createStartTime="1613514750643" createEndTime="1613514750645" exception="true" exception-type="java.lang.Exception" exception-message="java.lang.RuntimeException: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_fornecedor&quot; does not exist
+  Position: 36
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:225)
+	at ca.sqlpower.architect.profile.AbstractTableProfileCreator.doProfile(AbstractTableProfileCreator.java:54)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:246)
+	at ca.sqlpower.architect.profile.ProfileManagerImpl$ProfileResultCallable.call(ProfileManagerImpl.java:188)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: org.postgresql.util.PSQLException: ERROR: relation &quot;dim_fornecedor&quot; does not exist
+  Position: 36
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:323)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:473)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:393)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:322)
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:308)
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:284)
+	at org.postgresql.jdbc.PgStatement.executeQuery(PgStatement.java:236)
+	at ca.sqlpower.sql.jdbcwrapper.StatementDecorator.executeQuery(StatementDecorator.java:117)
+	at org.apache.commons.dbcp.DelegatingStatement.executeQuery(DelegatingStatement.java:208)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doTableProfile(RemoteDatabaseProfileCreator.java:265)
+	at ca.sqlpower.architect.profile.RemoteDatabaseProfileCreator.doProfileImpl(RemoteDatabaseProfileCreator.java:210)
+	... 7 more
+" rowCount="0" UUID="d2edfb1d-6db5-49d2-b095-9003e530d0e8">
+  </table-profile-result>
+  </profiles>
+  <olap>
+  </olap>
+  <olap-gui>
+  </olap-gui>
+</architect-project>
