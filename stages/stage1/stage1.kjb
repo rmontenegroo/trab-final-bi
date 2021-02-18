@@ -327,7 +327,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>/home/rodmonte/Desktop/git.repos/trab-final-bi/stages/stage1/stage1_trata_tabela_gastos.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/stage1_trata_tabela_gastos.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -366,7 +366,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>/home/rodmonte/Desktop/git.repos/trab-final-bi/stages/stage1/stage1_trata_tabela_parlamentares.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/stage1_trata_tabela_parlamentares.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>

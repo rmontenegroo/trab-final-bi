@@ -561,7 +561,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>file:///home/rodmonte/Desktop/git.repos/trab-final-bi/carga_dw/carga_dw_dim_data.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/carga_dw_dim_data.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>

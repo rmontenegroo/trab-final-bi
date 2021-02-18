@@ -532,11 +532,11 @@
     </hop>
     <hop>
       <from>transforma_campos_nulos_em_N/A_ou_zero</from>
-      <to>trata_caso_LATAM</to>
+      <to>trata_caso_LATAM_e_valores_negativos</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>trata_caso_LATAM</from>
+      <from>trata_caso_LATAM_e_valores_negativos</from>
       <to>cria_campo_natureza</to>
       <enabled>Y</enabled>
     </hop>
@@ -1725,7 +1725,7 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
+      <xloc>992</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1760,7 +1760,7 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
+      <xloc>992</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1801,7 +1801,7 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
+      <xloc>848</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2472,7 +2472,7 @@ FROM "public".st0_gastos
     </GUI>
   </step>
   <step>
-    <name>trata_caso_LATAM</name>
+    <name>trata_caso_LATAM_e_valores_negativos</name>
     <type>Formula</type>
     <description/>
     <distribute>Y</distribute>
@@ -2490,6 +2490,38 @@ FROM "public".st0_gastos
       <value_precision>-1</value_precision>
       <replace_field>txtcnpjcpf</replace_field>
     </formula>
+    <formula>
+      <field_name>vlrdocumento</field_name>
+      <formula_string>ABS([vlrdocumento])</formula_string>
+      <value_type>Number</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>vlrdocumento</replace_field>
+    </formula>
+    <formula>
+      <field_name>vlrglosa</field_name>
+      <formula_string>ABS([vlrglosa])</formula_string>
+      <value_type>Number</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>vlrglosa</replace_field>
+    </formula>
+    <formula>
+      <field_name>vlrliquido</field_name>
+      <formula_string>ABS([vlrliquido])</formula_string>
+      <value_type>Number</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>vlrliquido</replace_field>
+    </formula>
+    <formula>
+      <field_name>vlrrestituicao</field_name>
+      <formula_string>ABS([vlrrestituicao])</formula_string>
+      <value_type>Number</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>vlrrestituicao</replace_field>
+    </formula>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -2499,8 +2531,8 @@ FROM "public".st0_gastos
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
-      <yloc>144</yloc>
+      <xloc>848</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
