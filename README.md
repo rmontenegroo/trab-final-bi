@@ -65,7 +65,7 @@
 - pk: *primary key*
 
 ##   Arquivos
-- [projeto-bi-gastos-paralamentares-v0.2.pbix.zip](https://drive.google.com/file/d/1nmTHuA5PreAV-j_S5SE8htkhrYJ1lr2K/view?usp=sharing)
+- [projeto-bi-gastos-paralamentares](/arquivos_power_bi/)
   
 ## TODO
 - Dashboards
