@@ -489,11 +489,6 @@
   </connection>
   <order>
     <hop>
-      <from>tabela_cnpj</from>
-      <to>Formula</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Formula</from>
       <to>Concat fields</to>
       <enabled>Y</enabled>
@@ -511,6 +506,21 @@
     <hop>
       <from>Add sequence</from>
       <to>Table output</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>tabela_cnpj</from>
+      <to>faz_trim_e_upper</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>faz_trim_e_upper</from>
+      <to>remove_símbolos</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>remove_símbolos</from>
+      <to>Formula</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -544,7 +554,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
+      <xloc>992</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -630,7 +640,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
+      <xloc>736</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -663,7 +673,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
+      <xloc>624</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -682,18 +692,27 @@
     <fields>
       <field>
         <name>cnpj</name>
+        <rename/>
       </field>
       <field>
         <name>nome_fantasia</name>
+        <rename/>
       </field>
       <field>
         <name>nm_pais</name>
+        <rename/>
       </field>
       <field>
         <name>uf</name>
+        <rename/>
       </field>
       <field>
         <name>cidade</name>
+        <rename/>
+      </field>
+      <field>
+        <name>razao_social</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -706,7 +725,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>864</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -764,6 +783,10 @@
         <column_name>cidade</column_name>
         <stream_name>cidade</stream_name>
       </field>
+      <field>
+        <column_name>razao_social</column_name>
+        <stream_name>razao_social</stream_name>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -774,7 +797,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>1120</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1148,6 +1171,110 @@ WHERE cnpj IN (SELECT DISTINCT cnpjcpf FROM st1_gastos)</sql>
     </remotesteps>
     <GUI>
       <xloc>112</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>faz_trim_e_upper</name>
+    <type>StringOperations</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>razao_social</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+      <field>
+        <in_stream_name>nome_fantasia</in_stream_name>
+        <out_stream_name/>
+        <trim_type>both</trim_type>
+        <lower_upper>upper</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char/>
+        <pad_len/>
+        <init_cap>N</init_cap>
+        <mask_xml>None</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>272</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>remove_símbolos</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>razao_social</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>[\*|\#|\+|\?]</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>nome_fantasia</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>[\*|\#|\+|\?]</replace_string>
+        <replace_by_string/>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
